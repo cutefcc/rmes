@@ -7,12 +7,20 @@
 //   store,
 // } from "@store/testZustand";
 import { useImmer } from '@mmfcc/hooks';
-import { memo, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 function Home() {
-  // const [a, setA] = useImmer({ a: 1 });
+  const [data, setData] = useImmer({ owner_list: [] });
   const [a, setA] = useState({ a: 1 });
   console.log('home render');
   console.log(process.env.DB_HOST);
+  useEffect(() => {
+    fetch('https://my-app.cutefcc.workers.dev/api/ent/project/has_position')
+      .then(response => response.json())
+      .then(data => {
+        console.log('data', data);
+        setData(data.data);
+      });
+  }, []);
   return (
     <div>
       <h2>Home</h2>
@@ -27,6 +35,14 @@ function Home() {
       >
         a: {a.a}
       </p>
+      <p>fetch 接口 test</p>
+      {data.owner_list.map((item, index) => {
+        return (
+          <div key={index}>
+            <p>{item.name}</p>
+          </div>
+        );
+      })}
     </div>
   );
 }
