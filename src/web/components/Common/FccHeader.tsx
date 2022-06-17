@@ -22,7 +22,7 @@ const FccHeader: FC = () => {
         <nav>
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/">区域化管理综合评价软件/Home</Link>
             </li>
             <li>
               <Link to="/courses">Courses</Link>
