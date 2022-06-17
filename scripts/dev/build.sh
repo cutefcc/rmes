@@ -1,0 +1,1 @@
+pnpm client:dev && pnpm server:dev

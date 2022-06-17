@@ -1,0 +1,1 @@
+nodemon --inspect /src/server/app.ts
