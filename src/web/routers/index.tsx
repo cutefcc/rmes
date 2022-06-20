@@ -3,6 +3,7 @@ import Loading from '@components/Loading';
 import MainLayout from '@layouts/MainLayout';
 import TestJotai from '@pages/TestJotai';
 import TestReactUse from '@pages/TestReactUse';
+import Echarts from '@pages/Echarts';
 import { lazy, Suspense } from 'react';
 const Home = lazy(() => import('@pages/Home'));
 //import Home from '@pages/Home';
@@ -43,6 +44,7 @@ const mainRoutes = {
     { index: true, element: <Home /> },
     { path: '/testJotai', element: <TestJotai /> },
     { path: '/testReactUse', element: <TestReactUse /> },
+    { path: '/echarts', element: <Echarts /> },
     {
       path: '/courses',
       element: <Courses />,

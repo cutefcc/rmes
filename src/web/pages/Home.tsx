@@ -23,14 +23,13 @@ function Home() {
   }, []);
   return (
     <div>
-      <h2>Home</h2>
-      {/* <h2>{getState().name}</h2> */}
+      {/* <h2>Home</h2>
+      <h2>{getState().name}</h2>
       <p
         onClick={() => {
-          setA({ a: 1 });
-          // setA((draft) => {
-          //   draft.a = 1;
-          // });
+          setA((draft) => {
+            draft.a = 1;
+          });
         }}
       >
         a: {a.a}
@@ -42,7 +41,7 @@ function Home() {
             <p>{item.name}</p>
           </div>
         );
-      })}
+      })} */}
     </div>
   );
 }
