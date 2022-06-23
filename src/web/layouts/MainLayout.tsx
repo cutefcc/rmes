@@ -1,11 +1,9 @@
-import FccHeader from '@components/Common/FccHeader';
-// import { Outlet } from "react-router-dom";
+import Menu from '@components/Menu/Menu';
 
 const MainLayout = (): JSX.Element => {
   return (
     <div className="container">
-      <FccHeader />
-      {/* <Outlet /> */}
+      <Menu />
     </div>
   );
 };
