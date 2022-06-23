@@ -2,7 +2,7 @@ import Menu from '@components/Menu/Menu';
 
 const MainLayout = (): JSX.Element => {
   return (
-    <div className="container">
+    <div>
       <Menu />
     </div>
   );

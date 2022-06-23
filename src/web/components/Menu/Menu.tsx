@@ -7,6 +7,7 @@ import './index.css';
 const { Header, Content, Sider } = Layout;
 
 const FccHeader: FC = () => {
+  // Sider 收起状态，初始化不收起
   const [collapsed, setCollapsed] = useState(false);
   return (
     <>
@@ -16,18 +17,20 @@ const FccHeader: FC = () => {
             <div className="logo" style={{ height: '64px' }}>
               x
             </div>
-            <Menu
-              onClick={e => {
-                console.log('000', e);
-                // if (e.key === 23) {
-                //   history.push('/courses');
-                // }
-              }}
-              theme="dark"
-              defaultSelectedKeys={['1']}
-              mode="inline"
-              items={MenuConfig}
-            />
+            <div className="menu">
+              <Menu
+                onClick={e => {
+                  console.log('000', e);
+                  // if (e.key === 23) {
+                  //   history.push('/courses');
+                  // }
+                }}
+                theme="dark"
+                defaultSelectedKeys={['1']}
+                mode="inline"
+                items={MenuConfig}
+              />
+            </div>
           </Sider>
           <Layout className="site-layout">
             <Header className="site-layout-background" style={{ padding: 0 }} />

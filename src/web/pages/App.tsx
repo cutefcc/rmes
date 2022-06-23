@@ -1,5 +1,5 @@
-import { useRoutes, BrowserRouter as Router } from "react-router-dom";
-import routes from "../routers";
+import { useRoutes, BrowserRouter as Router } from 'react-router-dom';
+import routes from '../routers';
 const App = () => useRoutes(routes);
 
 const AppWrapper = () => {

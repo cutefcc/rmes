@@ -23,6 +23,7 @@ function NoMatch() {
       <p>
         <Link to="/">Go to the home page</Link>
       </p>
+      <div className="border border-sky-500">6767</div>
     </div>
   );
 }

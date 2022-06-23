@@ -7,3 +7,9 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+.menu {
+  /* background-color: #f3f; */
+  height: calc(100vh - 112px);
+  overflow-y: scroll;
+  overflow-y: overlay;
+}
