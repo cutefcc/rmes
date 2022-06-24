@@ -8,11 +8,13 @@
 // } from "@store/testZustand";
 import { useImmer } from '@mmfcc/hooks';
 import { memo, useEffect, useState } from 'react';
+import { useAtom } from 'jotai';
+import { store } from '@store/jotaiStore/testJotai';
 function Home() {
+  const [obj, setObj] = useAtom(store);
   const [data, setData] = useImmer({ owner_list: [] });
   const [a, setA] = useState({ a: 1 });
   console.log('home render');
-  console.log(process.env.DB_HOST);
   useEffect(() => {
     fetch('https://my-app.cutefcc.workers.dev/api/ent/project/has_position')
       .then(response => response.json())
@@ -42,6 +44,7 @@ function Home() {
           </div>
         );
       })} */}
+      <p>test jotai: {obj.str}</p>
     </div>
   );
 }

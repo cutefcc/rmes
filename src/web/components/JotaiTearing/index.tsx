@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import { atom, useAtom } from "jotai";
-const textAtom = atom("hello");
+import { useEffect, useState } from 'react';
+import { atom, useAtom } from 'jotai';
+const textAtom = atom('hello');
 
 const JotaiTearing = () => {
-  console.log("页面渲染了 - JotaiTearing");
+  console.log('页面渲染了 - JotaiTearing');
   const [count, setCount] = useState(0);
   const [text, setText] = useAtom(textAtom);
   useEffect(() => {}, []);
@@ -15,9 +15,7 @@ const JotaiTearing = () => {
         <div>text:{text}</div>
 
         <button onClick={() => setCount(Math.random())}>change count</button>
-        <button onClick={() => setText(Math.random().toString())}>
-          change text
-        </button>
+        <button onClick={() => setText(Math.random().toString())}>change text</button>
       </div>
     </div>
   );

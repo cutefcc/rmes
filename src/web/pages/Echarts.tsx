@@ -1,8 +1,11 @@
 import { useImmer } from '@mmfcc/hooks';
 import { memo, useEffect, useState } from 'react';
+import { store } from '@store/jotaiStore/testJotai';
+import { useAtom } from 'jotai';
 import * as echarts from 'echarts';
 
 function Home() {
+  const [obj, setObj] = useAtom(store);
   useEffect(() => {
     let chartDom = document.getElementById('main1');
     let myChart = echarts.init(chartDom);

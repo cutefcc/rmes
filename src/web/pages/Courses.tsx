@@ -15,9 +15,8 @@ function Courses() {
   };
   return (
     <div>
-      <h2>Courses</h2>
-      {/* <Outlet /> */}
-      <button onClick={changeFn}>changeState1234</button>
+      <h2>test zustand</h2>
+      <button onClick={changeFn}>changeZustandState</button>
       name: {name}
       <p>arr: {arr}</p>
     </div>

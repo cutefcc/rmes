@@ -20,7 +20,7 @@ const FccHeader: FC = () => {
             <div className="menu">
               <Menu
                 onClick={e => {
-                  console.log('000', e);
+                  // console.log('000', e);
                   // if (e.key === 23) {
                   //   history.push('/courses');
                   // }

@@ -4,4 +4,5 @@
 @import '~antd/dist/antd.css';
 body {
   overflow-y: hidden;
+  font-size: 16px;
 }
