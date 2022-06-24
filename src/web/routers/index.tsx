@@ -1,4 +1,3 @@
-// import FccHeader from "@components/Common/FccHeader";
 import Loading from '@components/Loading';
 import MainLayout from '@layouts/MainLayout';
 import TestJotai from '@pages/TestJotai';
@@ -6,9 +5,8 @@ import TestReactUse from '@pages/TestReactUse';
 import Echarts from '@pages/Echarts';
 import { lazy, Suspense } from 'react';
 const Home = lazy(() => import('@pages/Home'));
-//import Home from '@pages/Home';
 const Courses = lazy(() => import('@pages/Courses'));
-import { Link, RouteObject, useRoutes } from 'react-router-dom';
+import { Link, RouteObject } from 'react-router-dom';
 const Routes: RouteObject[] = [];
 const Layout = () => (
   <Suspense fallback={<Loading />}>
@@ -29,11 +27,9 @@ function NoMatch() {
 }
 
 function Course() {
-  // let { id } = useParams<'id'>();
   return (
     <div>
       <p>This is a great course. You're gonna love it!</p>
-
       <Link to="/courses">See all courses</Link>
     </div>
   );

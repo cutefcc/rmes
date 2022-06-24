@@ -28,7 +28,7 @@ const FccHeader: FC = () => {
                 theme="dark"
                 defaultSelectedKeys={['1']}
                 mode="inline"
-                items={MenuConfig}
+                items={MenuConfig()}
               />
             </div>
           </Sider>
