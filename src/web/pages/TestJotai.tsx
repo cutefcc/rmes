@@ -20,7 +20,7 @@ function TestJotai() {
   };
   return (
     <div>
-      <h2>TestJotai</h2>
+      <h2>TestJotai-1</h2>
       <p>str: {obj.str}</p>
       <button onClick={changeFn} className={str}>
         changeState
