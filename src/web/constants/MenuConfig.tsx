@@ -27,6 +27,9 @@ const MenuConfig = () => {
   const handleGoHome = () => {
     navigate('/');
   };
+  const handleGoZustand = () => {
+    navigate('/testZustand');
+  };
   return [
     getItem('a', '1', <PieChartOutlined />, [getItem('a1', '2'), getItem('a2', '3')]),
     getItem('b', '4', <DesktopOutlined />, [getItem('b1', '5'), getItem('b2', '6')]),
@@ -47,7 +50,7 @@ const MenuConfig = () => {
       getItem('', '23', <div onClick={handleGoEchartsDemo}>echarts demo</div>),
       getItem('', '24', <div onClick={handleGoTestJotai}>test jotai</div>),
       getItem('', '25', <div onClick={handleGoHome}>back Home</div>),
-      getItem('g4', '26'),
+      getItem('', '26', <div onClick={handleGoZustand}>test Zustand</div>),
       getItem('g5', '27'),
     ]),
   ];

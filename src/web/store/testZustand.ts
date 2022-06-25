@@ -30,10 +30,15 @@ function changeState() {
     // draft.arr = [1234];
   });
 }
+function handleAddZustandAge() {
+  setState(draft => {
+    draft.age = draft.age + 1;
+  });
+}
 // subscribe((draft) => {
 //   console.log(draft);
 // });
-export { getState, setState, subscribe, destroy, changeState, store };
+export { getState, setState, subscribe, destroy, changeState, handleAddZustandAge, store };
 
 // 自己写immer 不用zustand 的中间件
 // const useStore = create<{

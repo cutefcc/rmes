@@ -5,7 +5,7 @@ import TestReactUse from '@pages/TestReactUse';
 import Echarts from '@pages/Echarts';
 import { lazy, Suspense } from 'react';
 const Home = lazy(() => import('@pages/Home'));
-const Courses = lazy(() => import('@pages/Courses'));
+const TestZustand = lazy(() => import('@pages/TestZustand'));
 import { Link, RouteObject } from 'react-router-dom';
 const Routes: RouteObject[] = [];
 const Layout = () => (
@@ -43,11 +43,11 @@ const mainRoutes = {
     { path: '/testReactUse', element: <TestReactUse /> },
     { path: '/echarts', element: <Echarts /> },
     {
-      path: '/courses',
-      element: <Courses />,
+      path: '/testZustand',
+      element: <TestZustand />,
       children: [
-        { index: true, element: <Courses /> },
-        { path: '/courses/:id', element: <Course /> },
+        { index: true, element: <TestZustand /> },
+        { path: '/testZustand/:id', element: <Course /> },
       ],
     },
     { path: '*', element: <NoMatch /> },

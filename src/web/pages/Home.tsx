@@ -1,19 +1,23 @@
-// import {
-//   getState,
-//   setState,
-//   subscribe,
-//   destroy,
-//   changeState,
-//   store,
-// } from "@store/testZustand";
 import { useImmer } from '@mmfcc/hooks';
 import { memo, useEffect, useState } from 'react';
 import { useAtom } from 'jotai';
 import { store } from '@store/jotaiStore/testJotai';
+
+import {
+  getState,
+  setState,
+  subscribe,
+  destroy,
+  changeState,
+  store as zustandStore,
+} from '@store/testZustand';
+import create from 'zustand';
+const useStore = create(zustandStore);
 function Home() {
   const [obj, setObj] = useAtom(store);
   const [data, setData] = useImmer({ owner_list: [] });
   const [a, setA] = useState({ a: 1 });
+  const { name, arr, age } = useStore();
   console.log('home render');
   useEffect(() => {
     fetch('https://my-app.cutefcc.workers.dev/api/ent/project/has_position')
@@ -45,6 +49,9 @@ function Home() {
         );
       })} */}
       <p>test jotai: {obj.str}</p>
+      <p>
+        test zustand: name: {name}, arr: {arr}, age: {age}
+      </p>
     </div>
   );
 }
