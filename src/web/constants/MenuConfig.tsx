@@ -1,4 +1,10 @@
-import { DesktopOutlined, PieChartOutlined } from '@ant-design/icons';
+import {
+  AreaChartOutlined,
+  DatabaseOutlined,
+  DesktopOutlined,
+  ExperimentOutlined,
+  PieChartOutlined,
+} from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import type { MenuProps } from 'antd';
 type MenuItem = Required<MenuProps>['items'][number];
@@ -30,6 +36,9 @@ const MenuConfig = () => {
   const handleGoZustand = () => {
     navigate('/testZustand');
   };
+  const handleGoBabylonSkyBox = () => {
+    navigate('/babylonSkyBox');
+  };
   return [
     getItem('a', '1', <PieChartOutlined />, [getItem('a1', '2'), getItem('a2', '3')]),
     getItem('b', '4', <DesktopOutlined />, [getItem('b1', '5'), getItem('b2', '6')]),
@@ -40,19 +49,30 @@ const MenuConfig = () => {
       getItem('d3', '13'),
     ]),
     getItem('e', '14', <DesktopOutlined />, [getItem('e1', '15'), getItem('e2', '16')]),
-    getItem('f', '17', <DesktopOutlined />, [
-      getItem('f1', '18'),
+    getItem('3D', '17', <ExperimentOutlined />, [
+      getItem('', '18', <div onClick={handleGoTestJotai}>babylon</div>, [
+        getItem('skybox', '28', <div onClick={handleGoBabylonSkyBox}>SkyBox</div>),
+      ]),
       getItem('f2', '19'),
       getItem('f3', '20'),
       getItem('f4', '21'),
     ]),
-    getItem('g', '22', <DesktopOutlined />, [
-      getItem('', '23', <div onClick={handleGoEchartsDemo}>echarts demo</div>),
-      getItem('', '24', <div onClick={handleGoTestJotai}>test jotai</div>),
-      getItem('', '25', <div onClick={handleGoHome}>back Home</div>),
-      getItem('', '26', <div onClick={handleGoZustand}>test Zustand</div>),
-      getItem('g5', '27'),
+    getItem('状态管理', '22', <DatabaseOutlined />, [
+      getItem('', '23', <div onClick={handleGoTestJotai}>jotai</div>),
+      getItem('', '24', <div onClick={handleGoHome}>back Home</div>),
+      getItem('', '25', <div onClick={handleGoZustand}>Zustand</div>),
+      getItem('g5', '26'),
     ]),
+    getItem(
+      '图表类',
+      '27',
+      <>
+        <AreaChartOutlined />
+        <div className="ml-10" onClick={handleGoEchartsDemo}>
+          echarts
+        </div>
+      </>
+    ),
   ];
 };
 export default MenuConfig;

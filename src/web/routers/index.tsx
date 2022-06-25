@@ -3,6 +3,7 @@ import MainLayout from '@layouts/MainLayout';
 import TestJotai from '@pages/TestJotai';
 import TestReactUse from '@pages/TestReactUse';
 import Echarts from '@pages/Echarts';
+import BabylonSkyBox from '@pages/BabylonSkyBox';
 import { lazy, Suspense } from 'react';
 const Home = lazy(() => import('@pages/Home'));
 const TestZustand = lazy(() => import('@pages/TestZustand'));
@@ -42,6 +43,7 @@ const mainRoutes = {
     { path: '/testJotai', element: <TestJotai /> },
     { path: '/testReactUse', element: <TestReactUse /> },
     { path: '/echarts', element: <Echarts /> },
+    { path: '/babylonSkyBox', element: <BabylonSkyBox /> },
     {
       path: '/testZustand',
       element: <TestZustand />,
