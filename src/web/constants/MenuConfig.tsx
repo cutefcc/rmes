@@ -30,9 +30,6 @@ const MenuConfig = () => {
   const handleGoTestJotai = () => {
     navigate('/testJotai');
   };
-  const handleGoHome = () => {
-    navigate('/');
-  };
   const handleGoZustand = () => {
     navigate('/testZustand');
   };
@@ -58,9 +55,9 @@ const MenuConfig = () => {
       getItem('f4', '21'),
     ]),
     getItem('状态管理', '22', <DatabaseOutlined />, [
-      getItem('', '23', <div onClick={handleGoTestJotai}>jotai</div>),
-      getItem('', '24', <div onClick={handleGoHome}>back Home</div>),
-      getItem('', '25', <div onClick={handleGoZustand}>Zustand</div>),
+      getItem('Jotai', '23'),
+      getItem('Home', '24'),
+      getItem('Zustand', '25'),
       getItem('g5', '26'),
     ]),
     getItem(
