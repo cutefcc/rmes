@@ -5,6 +5,7 @@ import TestReactUse from '@pages/TestReactUse';
 import Echarts from '@pages/Echarts';
 import BabylonSkyBox from '@pages/BabylonSkyBox';
 import Pbr from '@pages/Pbr';
+import Library from '@pages/Library';
 import { lazy, Suspense } from 'react';
 const Home = lazy(() => import('@pages/Home'));
 const TestZustand = lazy(() => import('@pages/TestZustand'));
@@ -46,6 +47,7 @@ const mainRoutes = {
     { path: '/echarts', element: <Echarts /> },
     { path: '/babylonSkyBox', element: <BabylonSkyBox /> },
     { path: '/pbrMaterials', element: <Pbr /> },
+    { path: '/library', element: <Library /> },
     {
       path: '/testZustand',
       element: <TestZustand />,

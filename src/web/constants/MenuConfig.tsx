@@ -42,7 +42,7 @@ const MenuConfig = () => {
     getItem('e', '14', <DesktopOutlined />, [getItem('e1', '15'), getItem('e2', '16')]),
     getItem('3D', '17', <ExperimentOutlined />, [
       getItem('', '18', <div>babylon</div>, [getItem('skybox', '28'), getItem('pbr', '29')]),
-      getItem('f2', '19'),
+      getItem('', '19', <div>library</div>),
       getItem('f3', '20'),
       getItem('f4', '21'),
     ]),
