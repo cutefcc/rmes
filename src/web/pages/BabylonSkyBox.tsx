@@ -41,7 +41,7 @@ class GameScene extends BABYLON.Scene {
     // const meterial = new BABYLON.StandardMaterial("skyBox", this);
     const meterial = new BABYLON.BackgroundMaterial('skyBox', this);
     meterial.reflectionTexture = new BABYLON.CubeTexture(
-      'http://localhost:8080/images/skybox_img/bg',
+      'http://167.179.102.232:81/images/skybox_img/bg',
       this,
       ['_px', '_py', '_pz', '_nx', '_ny', '_nz'].map(i => `${i}.webp`)
     );
