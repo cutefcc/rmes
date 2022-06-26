@@ -23,13 +23,13 @@ function getItem(
   } as MenuItem;
 }
 const MenuConfig = () => {
-  const navigate = useNavigate();
-  const handleGoEchartsDemo = () => {
-    navigate('/echarts');
-  };
-  const handleGoTestJotai = () => {
-    navigate('/testJotai');
-  };
+  // const navigate = useNavigate();
+  // const handleGoEchartsDemo = () => {
+  //   navigate('/echarts');
+  // };
+  // const handleGoTestJotai = () => {
+  //   navigate('/testJotai');
+  // };
   return [
     getItem('a', '1', <PieChartOutlined />, [getItem('a1', '2'), getItem('a2', '3')]),
     getItem('b', '4', <DesktopOutlined />, [getItem('b1', '5'), getItem('b2', '6')]),
@@ -57,9 +57,7 @@ const MenuConfig = () => {
       '27',
       <>
         <AreaChartOutlined />
-        <div className="ml-10" onClick={handleGoEchartsDemo}>
-          echarts
-        </div>
+        <div className="ml-10">echarts</div>
       </>
     ),
   ];

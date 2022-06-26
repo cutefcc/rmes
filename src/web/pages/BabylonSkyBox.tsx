@@ -1,6 +1,7 @@
 import { useImmer } from '@mmfcc/hooks';
 import * as BABYLON from '@babylonjs/core';
 import { memo, useEffect, useState } from 'react';
+import gsap from 'gsap';
 import { store } from '@store/jotaiStore/testJotai';
 import { useAtom } from 'jotai';
 import * as echarts from 'echarts';
@@ -48,6 +49,13 @@ class GameScene extends BABYLON.Scene {
     );
     meterial.reflectionTexture.coordinatesMode = BABYLON.Texture.SKYBOX_MODE;
     skyBox.material = meterial;
+    gsap.to(skyBox.rotation, {
+      y: Math.PI * 2,
+      duration: 10,
+      repeat: -1,
+      ease: 'linear',
+      yoyo: true,
+    });
   }
 }
 
@@ -59,6 +67,7 @@ function BabylonSkyBox() {
       // scene.debugLayer.show({
       //   embedMode: true,
       // });
+      /*
       // create ground
       const ground = BABYLON.MeshBuilder.CreateGround('ground', { width: 20, height: 20 }, scene);
       // give ground color
@@ -67,7 +76,7 @@ function BabylonSkyBox() {
       groundMat.diffuseColor = new BABYLON.Color3(0, 10, 0);
       ground.material = groundMat; //Place the material property of the ground
       // ground.material = groundMaterial;
-
+*/
       engine.runRenderLoop(() => {
         scene.render();
       });

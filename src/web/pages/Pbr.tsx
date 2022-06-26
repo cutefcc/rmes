@@ -61,7 +61,17 @@ class GameScene extends BABYLON.Scene {
       // 移动
       //   result.meshes[0].position.x = 5;
       //   result.meshes[0].position.y = 5;
-      //   result.meshes[0].position.z = 5;
+      // result.meshes[0].position.z = 5;
+      result.meshes.forEach(item => {
+        item.rotation = new BABYLON.Vector3(0, 0, 0);
+        gsap.to(item.rotation, {
+          y: Math.PI * 2,
+          duration: 10,
+          repeat: -1,
+          ease: 'linear',
+          yoyo: true,
+        });
+      });
     });
   }
 }
@@ -77,7 +87,7 @@ function Pbr() {
 
       const ground = BABYLON.MeshBuilder.CreateGround('ground', { width: 20, height: 20 }, scene);
 
-      const pbr = new BABYLON.PBRMaterial('prb', this);
+      const pbr = new BABYLON.PBRMaterial('prb', scene);
 
       pbr.albedoTexture = new BABYLON.Texture(
         `${ModelsHost}pbr/assets/texture/TexturesCom_Metal_TreadplateBare_1K_albedo.jpg`
@@ -98,6 +108,13 @@ function Pbr() {
       pbr.useParallaxOcclusion = true; // 是否使用视差遮盖
 
       ground.material = pbr;
+      gsap.to(ground.rotation, {
+        y: Math.PI * 2,
+        duration: 10,
+        repeat: -1,
+        ease: 'linear',
+        yoyo: true,
+      });
       engine.runRenderLoop(() => {
         scene.render();
       });
