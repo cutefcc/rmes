@@ -31,15 +31,7 @@ const MenuConfig = () => {
   //   navigate('/testJotai');
   // };
   return [
-    getItem('a', '1', <PieChartOutlined />, [getItem('a1', '2'), getItem('a2', '3')]),
-    getItem('b', '4', <DesktopOutlined />, [getItem('b1', '5'), getItem('b2', '6')]),
-    getItem('c', '7', <DesktopOutlined />, [getItem('c1', '8'), getItem('c2', '9')]),
-    getItem('d', '10', <DesktopOutlined />, [
-      getItem('d1', '11'),
-      getItem('d2', '12'),
-      getItem('d3', '13'),
-    ]),
-    getItem('e', '14', <DesktopOutlined />, [getItem('e1', '15'), getItem('e2', '16')]),
+    // getItem('a', '1', <PieChartOutlined />, [getItem('a1', '2'), getItem('a2', '3')]),
     getItem('3D', '17', <ExperimentOutlined />, [
       getItem('', '18', <div>babylon</div>, [getItem('skybox', '28'), getItem('pbr', '29')]),
       getItem('', '19', <div>library</div>),
