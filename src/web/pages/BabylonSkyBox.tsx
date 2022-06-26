@@ -4,6 +4,7 @@ import { memo, useEffect, useState } from 'react';
 import { store } from '@store/jotaiStore/testJotai';
 import { useAtom } from 'jotai';
 import * as echarts from 'echarts';
+import { ModelsHost } from '@constants/ModelsConfig';
 import { createEngine } from '@utils/babylonEngine';
 
 class GameScene extends BABYLON.Scene {
@@ -41,7 +42,7 @@ class GameScene extends BABYLON.Scene {
     // const meterial = new BABYLON.StandardMaterial("skyBox", this);
     const meterial = new BABYLON.BackgroundMaterial('skyBox', this);
     meterial.reflectionTexture = new BABYLON.CubeTexture(
-      'http://167.179.102.232:81/images/skybox_img/bg',
+      `${ModelsHost}images/skybox_img/bg`,
       this,
       ['_px', '_py', '_pz', '_nx', '_ny', '_nz'].map(i => `${i}.webp`)
     );
@@ -58,16 +59,15 @@ function BabylonSkyBox() {
       // scene.debugLayer.show({
       //   embedMode: true,
       // });
-      /*
       // create ground
       const ground = BABYLON.MeshBuilder.CreateGround('ground', { width: 20, height: 20 }, scene);
       // give ground color
       // let groundMaterial = new BABYLON.StandardMaterial("Ground Material", scene);
       const groundMat = new BABYLON.StandardMaterial('groundMat');
-      groundMat.diffuseColor = new BABYLON.Color3(0, 1, 0);
+      groundMat.diffuseColor = new BABYLON.Color3(0, 10, 0);
       ground.material = groundMat; //Place the material property of the ground
       // ground.material = groundMaterial;
-*/
+
       engine.runRenderLoop(() => {
         scene.render();
       });
