@@ -9,6 +9,7 @@ const Ktx2 = lazy(() => import('@pages/Ktx2'));
 const ThreeLoadGLTF = lazy(() => import('@pages/ThreeLoadGLTF'));
 const Echarts = lazy(() => import('@pages/Echarts'));
 const TestJotai = lazy(() => import('@pages/TestJotai'));
+const TestStore = lazy(() => import('@pages/TestStore'));
 const BabylonSkyBox = lazy(() => import('@pages/BabylonSkyBox'));
 const TestReactUse = lazy(() => import('@pages/TestReactUse'));
 import { Link, RouteObject } from 'react-router-dom';
@@ -47,6 +48,7 @@ const mainRoutes = {
     { path: '/testJotai', element: <TestJotai /> },
     { path: '/testReactUse', element: <TestReactUse /> },
     { path: '/echarts', element: <Echarts /> },
+    { path: '/testStore', element: <TestStore /> },
     { path: '/babylonSkyBox', element: <BabylonSkyBox /> },
     { path: '/pbrMaterials', element: <Pbr /> },
     { path: '/library', element: <Library /> },

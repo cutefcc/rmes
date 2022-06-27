@@ -4,7 +4,7 @@ export type MenuRouteConfigType = {
 export const MenuRouteConfig: MenuRouteConfigType = {
   '19': '/library',
   '23': '/testJotai',
-  '24': '/',
+  '24': '/testStore',
   '25': '/testZustand',
   '27': '/echarts',
   '28': '/babylonSkyBox',

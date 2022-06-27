@@ -37,8 +37,8 @@ const MenuConfig = () => {
     ]),
     getItem('状态管理', '22', <DatabaseOutlined />, [
       getItem('Jotai', '23'),
-      getItem('Home', '24'),
       getItem('Zustand', '25'),
+      getItem('testStore', '24'),
     ]),
     getItem(
       '图表类',
