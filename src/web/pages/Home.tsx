@@ -67,6 +67,13 @@ const loadModles = scene => {
       gltf.scene.scale.set(5, 5, 5); // 缩放
       gltf.scene.position.set(-0.5, -1, 0); // 位置
       console.log('动画', gltf.animations);
+      gsap.to(gltf.scene.rotation, {
+        y: Math.PI * 2,
+        duration: 10,
+        repeat: -1,
+        ease: 'linear',
+        // yoyo: true,
+      });
       scene.add(gltf.scene);
       // 去播放动画
       mixer = new THREE.AnimationMixer(gltf.scene);
