@@ -1,14 +1,14 @@
+import { lazy, Suspense } from 'react';
 import Loading from '@components/Loading';
 import MainLayout from '@layouts/MainLayout';
-import TestJotai from '@pages/TestJotai';
-import TestReactUse from '@pages/TestReactUse';
-import Echarts from '@pages/Echarts';
-import BabylonSkyBox from '@pages/BabylonSkyBox';
-import Pbr from '@pages/Pbr';
-import Library from '@pages/Library';
-import { lazy, Suspense } from 'react';
 const Home = lazy(() => import('@pages/Home'));
 const TestZustand = lazy(() => import('@pages/TestZustand'));
+const Library = lazy(() => import('@pages/Library'));
+const Pbr = lazy(() => import('@pages/Pbr'));
+const Echarts = lazy(() => import('@pages/Echarts'));
+const TestJotai = lazy(() => import('@pages/TestJotai'));
+const BabylonSkyBox = lazy(() => import('@pages/BabylonSkyBox'));
+const TestReactUse = lazy(() => import('@pages/TestReactUse'));
 import { Link, RouteObject } from 'react-router-dom';
 const Routes: RouteObject[] = [];
 const Layout = () => (

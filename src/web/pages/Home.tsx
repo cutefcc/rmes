@@ -20,12 +20,12 @@ function Home() {
   const { name, arr, age } = useStore();
   console.log('home render');
   useEffect(() => {
-    fetch('https://my-app.cutefcc.workers.dev/api/ent/project/has_position')
-      .then(response => response.json())
-      .then(data => {
-        console.log('data', data);
-        setData(data.data);
-      });
+    // fetch('https://my-app.cutefcc.workers.dev/api/ent/project/has_position')
+    //   .then(response => response.json())
+    //   .then(data => {
+    //     console.log('data', data);
+    //     setData(data.data);
+    //   });
   }, []);
   return (
     <div>
