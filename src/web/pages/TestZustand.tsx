@@ -6,7 +6,7 @@ import {
   changeState,
   handleAddZustandAge,
   store,
-} from '@store/testZustand';
+} from '@store/zustandStore/testZustand';
 import create from 'zustand';
 const useStore = create(store);
 const str = 'bg-indigo-500 px-10 py-5 rounded text-white';

@@ -6,6 +6,7 @@ const TestZustand = lazy(() => import('@pages/TestZustand'));
 const Library = lazy(() => import('@pages/Library'));
 const Pbr = lazy(() => import('@pages/Pbr'));
 const Ktx2 = lazy(() => import('@pages/Ktx2'));
+const ThreeLoadGLTF = lazy(() => import('@pages/ThreeLoadGLTF'));
 const Echarts = lazy(() => import('@pages/Echarts'));
 const TestJotai = lazy(() => import('@pages/TestJotai'));
 const BabylonSkyBox = lazy(() => import('@pages/BabylonSkyBox'));
@@ -50,6 +51,7 @@ const mainRoutes = {
     { path: '/pbrMaterials', element: <Pbr /> },
     { path: '/library', element: <Library /> },
     { path: '/ktx2', element: <Ktx2 /> },
+    { path: '/threeLoadGLTF', element: <ThreeLoadGLTF /> },
     {
       path: '/testZustand',
       element: <TestZustand />,

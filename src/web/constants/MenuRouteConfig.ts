@@ -10,4 +10,5 @@ export const MenuRouteConfig: MenuRouteConfigType = {
   '28': '/babylonSkyBox',
   '29': '/pbrMaterials',
   '30': '/ktx2',
+  '32': '/threeLoadGLTF',
 };

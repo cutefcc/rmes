@@ -1,7 +1,6 @@
 import * as BABYLON from '@babylonjs/core';
 import '@babylonjs/loaders';
 import '@babylonjs/inspector';
-import gsap from 'gsap';
 import * as earcut from 'earcut';
 (window as any).earcut = earcut;
 

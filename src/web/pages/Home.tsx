@@ -10,7 +10,7 @@ import {
   destroy,
   changeState,
   store as zustandStore,
-} from '@store/testZustand';
+} from '@store/zustandStore/testZustand';
 import create from 'zustand';
 const useStore = create(zustandStore);
 function Home() {

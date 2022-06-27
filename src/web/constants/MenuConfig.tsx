@@ -31,8 +31,9 @@ const MenuConfig = () => {
         getItem('skybox', '28'),
         getItem('pbr', '29'),
         getItem('ktx2 & cannon', '30'),
+        getItem('', '19', <div>library</div>),
       ]),
-      getItem('', '19', <div>library</div>),
+      getItem('', '31', <div>three</div>, [getItem('loadGLTF & animate', '32')]),
     ]),
     getItem('状态管理', '22', <DatabaseOutlined />, [
       getItem('Jotai', '23'),
