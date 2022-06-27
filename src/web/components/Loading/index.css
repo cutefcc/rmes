@@ -1,3 +1,7 @@
 .loading {
   line-height: 100vh;
 }
+.loadingText {
+  position: relative;
+  top: 3px;
+}
