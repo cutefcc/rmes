@@ -27,7 +27,11 @@ const MenuConfig = () => {
   return [
     // getItem('a', '1', <PieChartOutlined />, [getItem('a1', '2'), getItem('a2', '3')]),
     getItem('3D', '17', <ExperimentOutlined />, [
-      getItem('', '18', <div>babylon</div>, [getItem('skybox', '28'), getItem('pbr', '29')]),
+      getItem('', '18', <div>babylon</div>, [
+        getItem('skybox', '28'),
+        getItem('pbr', '29'),
+        getItem('ktx2 & cannon', '30'),
+      ]),
       getItem('', '19', <div>library</div>),
     ]),
     getItem('状态管理', '22', <DatabaseOutlined />, [

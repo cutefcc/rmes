@@ -9,4 +9,5 @@ export const MenuRouteConfig: MenuRouteConfigType = {
   '27': '/echarts',
   '28': '/babylonSkyBox',
   '29': '/pbrMaterials',
+  '30': '/ktx2',
 };
