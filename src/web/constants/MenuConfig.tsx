@@ -1,10 +1,4 @@
-import {
-  AreaChartOutlined,
-  DatabaseOutlined,
-  DesktopOutlined,
-  ExperimentOutlined,
-  PieChartOutlined,
-} from '@ant-design/icons';
+import { AreaChartOutlined, DatabaseOutlined, ExperimentOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import type { MenuProps } from 'antd';
 type MenuItem = Required<MenuProps>['items'][number];
@@ -35,14 +29,11 @@ const MenuConfig = () => {
     getItem('3D', '17', <ExperimentOutlined />, [
       getItem('', '18', <div>babylon</div>, [getItem('skybox', '28'), getItem('pbr', '29')]),
       getItem('', '19', <div>library</div>),
-      getItem('f3', '20'),
-      getItem('f4', '21'),
     ]),
     getItem('状态管理', '22', <DatabaseOutlined />, [
       getItem('Jotai', '23'),
       getItem('Home', '24'),
       getItem('Zustand', '25'),
-      getItem('g5', '26'),
     ]),
     getItem(
       '图表类',

@@ -1,7 +1,7 @@
 import { lazy, Suspense } from 'react';
 import Loading from '@components/Loading';
 import MainLayout from '@layouts/MainLayout';
-const Home = lazy(() => import('@pages/Home'));
+import Home from '@pages/Home';
 const TestZustand = lazy(() => import('@pages/TestZustand'));
 const Library = lazy(() => import('@pages/Library'));
 const Pbr = lazy(() => import('@pages/Pbr'));
