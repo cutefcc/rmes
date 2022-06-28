@@ -11,4 +11,5 @@ export const MenuRouteConfig: MenuRouteConfigType = {
   '29': '/pbrMaterials',
   '30': '/ktx2',
   '32': '/threeLoadGLTF',
+  '34': '/reactThreeFilberDemo1',
 };

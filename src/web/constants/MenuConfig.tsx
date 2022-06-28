@@ -34,14 +34,15 @@ const MenuConfig = () => {
         getItem('', '19', <div>library</div>),
       ]),
       getItem('', '31', <div>three</div>, [getItem('loadGLTF & animate', '32')]),
+      getItem('', '33', <div>react-three-filber</div>, [getItem('demo', '34')]),
     ]),
-    getItem('状态管理', '22', <DatabaseOutlined />, [
+    getItem('store', '22', <DatabaseOutlined />, [
       getItem('Jotai', '23'),
       getItem('Zustand', '25'),
       getItem('testStore', '24'),
     ]),
     getItem(
-      '图表类',
+      'charts',
       '27',
       <>
         <AreaChartOutlined />

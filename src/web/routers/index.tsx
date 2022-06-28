@@ -7,6 +7,7 @@ const Library = lazy(() => import('@pages/Library'));
 const Pbr = lazy(() => import('@pages/Pbr'));
 const Ktx2 = lazy(() => import('@pages/Ktx2'));
 const ThreeLoadGLTF = lazy(() => import('@pages/ThreeLoadGLTF'));
+const ReactThreeFilberDemo1 = lazy(() => import('@pages/ReactThreeFilberDemo1'));
 const Echarts = lazy(() => import('@pages/Echarts'));
 const TestJotai = lazy(() => import('@pages/TestJotai'));
 const TestStore = lazy(() => import('@pages/TestStore'));
@@ -54,6 +55,7 @@ const mainRoutes = {
     { path: '/library', element: <Library /> },
     { path: '/ktx2', element: <Ktx2 /> },
     { path: '/threeLoadGLTF', element: <ThreeLoadGLTF /> },
+    { path: '/reactThreeFilberDemo1', element: <ReactThreeFilberDemo1 /> },
     {
       path: '/testZustand',
       element: <TestZustand />,
