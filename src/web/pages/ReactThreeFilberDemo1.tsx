@@ -36,7 +36,7 @@ function App() {
     {
       /* 创建4个Box */
     }
-    return Array.from({ length: 4 }, (_, i) => i).map((_, i) => {
+    return Array.from({ length: 30 }, (_, i) => i).map((_, i) => {
       let x = 0,
         y = 0,
         z = 0;
@@ -44,21 +44,22 @@ function App() {
         x = 4;
         y = 15;
         z = 0;
-      }
-      if (i === 1) {
+      } else if (i === 1) {
         x = 0;
         y = 15;
         z = 4;
-      }
-      if (i === 2) {
+      } else if (i === 2) {
         x = -4;
         y = 15;
         z = 0;
-      }
-      if (i === 3) {
+      } else if (i === 3) {
         x = 0;
         y = 15;
         z = -4;
+      } else {
+        x = Math.random() * 10 - 5;
+        y = Math.random() * 10;
+        z = Math.random() * 10 - 5;
       }
 
       return <Box key={i} position={[x, y, z]} />;
