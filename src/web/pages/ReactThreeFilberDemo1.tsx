@@ -1,25 +1,81 @@
-import { Canvas } from '@react-three/fiber';
+import { Canvas, ThreeEvent } from '@react-three/fiber';
 import { OrbitControls, PerspectiveCamera } from '@react-three/drei';
+import { Physics, usePlane, useBox } from '@react-three/cannon';
 
+// 涉及到shadow cannon 循环组件
+
+type BoxProps = {
+  key: number;
+  position: [x: number, y: number, z: number];
+};
 function App() {
-  const Floor = () => (
-    <mesh position={[0, -0.5, 0]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
-      <planeGeometry attach="geometry" args={[10, 10]} />
-      <meshStandardMaterial attach="material" color="blue" />
-    </mesh>
-  );
+  const Floor = () => {
+    // 用了这种方式，rotation position 只能在里面设置，不能写在mesh上（不生效）
+    const [plane] = usePlane<THREE.Mesh>(() => ({
+      mass: 0,
+      rotation: [-Math.PI / 2, 0, 0],
+      position: [0, -0.5, 0],
+    }));
+    return (
+      <mesh ref={plane} receiveShadow>
+        <planeGeometry attach="geometry" args={[40, 40]} />
+        <meshStandardMaterial attach="material" color="blue" />
+      </mesh>
+    );
+  };
+  const Box = (props: BoxProps) => {
+    const [ref, api] = useBox<THREE.Mesh>(() => ({ mass: 1, position: props.position }));
+    return (
+      <mesh ref={ref} castShadow>
+        <boxGeometry attach="geometry" args={[1, 1, 1]} />
+        <meshStandardMaterial attach="material" color="hotpink" />
+      </mesh>
+    );
+  };
+  const renderBox = () => {
+    {
+      /* 创建4个Box */
+    }
+    return Array.from({ length: 4 }, (_, i) => i).map((_, i) => {
+      let x = 0,
+        y = 0,
+        z = 0;
+      if (i === 0) {
+        x = 4;
+        y = 15;
+        z = 0;
+      }
+      if (i === 1) {
+        x = 0;
+        y = 15;
+        z = 4;
+      }
+      if (i === 2) {
+        x = -4;
+        y = 15;
+        z = 0;
+      }
+      if (i === 3) {
+        x = 0;
+        y = 15;
+        z = -4;
+      }
+
+      return <Box key={i} position={[x, y, z]} />;
+    });
+  };
   return (
     <Canvas shadows={true}>
-      <PerspectiveCamera makeDefault position={[-2, 3, 8]} />
+      {/* 可以改变position来调整camera的距离，起到场景放大缩小功能 */}
+      <PerspectiveCamera makeDefault position={[-8, 12, 32]} />
       <OrbitControls />
       <ambientLight />
       {/* <pointLight position={[10, 10, 10]} /> */}
       <directionalLight position={[10, 10, 10]} intensity={0.9} castShadow />
-      <mesh castShadow>
-        <boxGeometry attach="geometry" args={[1, 1, 1]} />
-        <meshStandardMaterial attach="material" color="hotpink" />
-      </mesh>
-      <Floor />
+      <Physics>
+        {renderBox()}
+        <Floor />
+      </Physics>
     </Canvas>
   );
 }
