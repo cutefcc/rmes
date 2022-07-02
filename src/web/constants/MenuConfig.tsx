@@ -1,4 +1,9 @@
-import { AreaChartOutlined, DatabaseOutlined, ExperimentOutlined } from '@ant-design/icons';
+import {
+  AreaChartOutlined,
+  CoffeeOutlined,
+  DatabaseOutlined,
+  ExperimentOutlined,
+} from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import type { MenuProps } from 'antd';
 type MenuItem = Required<MenuProps>['items'][number];
@@ -41,14 +46,16 @@ const MenuConfig = () => {
       getItem('Zustand', '25'),
       getItem('testStore', '24'),
     ]),
-    getItem(
-      'charts',
-      '27',
-      <>
-        <AreaChartOutlined />
-        <div className="ml-10">echarts</div>
-      </>
-    ),
+    getItem('daily', '35', <CoffeeOutlined />, [
+      getItem(
+        '',
+        '27',
+        <>
+          <AreaChartOutlined />
+          <div className="ml-10">echarts</div>
+        </>
+      ),
+    ]),
   ];
 };
 export default MenuConfig;

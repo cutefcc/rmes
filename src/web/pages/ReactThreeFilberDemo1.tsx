@@ -34,7 +34,7 @@ function App() {
   };
   const renderBox = () => {
     {
-      /* 创建4个Box */
+      /* 创建几个个Box */
     }
     return Array.from({ length: 30 }, (_, i) => i).map((_, i) => {
       let x = 0,
