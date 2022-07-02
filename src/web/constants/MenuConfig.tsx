@@ -36,6 +36,7 @@ const MenuConfig = () => {
         getItem('skybox', '28'),
         getItem('pbr', '29'),
         getItem('ktx2 & cannon', '30'),
+        getItem('shadow', '36'),
         getItem('', '19', <div>library</div>),
       ]),
       getItem('', '31', <div>three</div>, [getItem('loadGLTF & animate', '32')]),

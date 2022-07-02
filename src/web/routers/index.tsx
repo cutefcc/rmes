@@ -9,6 +9,7 @@ const Ktx2 = lazy(() => import('@pages/Ktx2'));
 const ThreeLoadGLTF = lazy(() => import('@pages/ThreeLoadGLTF'));
 const ReactThreeFilberDemo1 = lazy(() => import('@pages/ReactThreeFilberDemo1'));
 const Echarts = lazy(() => import('@pages/Echarts'));
+const BabylonShadow = lazy(() => import('@pages/BabylonShadow'));
 const TestJotai = lazy(() => import('@pages/TestJotai'));
 const TestStore = lazy(() => import('@pages/TestStore'));
 const BabylonSkyBox = lazy(() => import('@pages/BabylonSkyBox'));
@@ -49,6 +50,7 @@ const mainRoutes = {
     { path: '/testJotai', element: <TestJotai /> },
     { path: '/testReactUse', element: <TestReactUse /> },
     { path: '/echarts', element: <Echarts /> },
+    { path: '/BabylonShdow', element: <BabylonShadow /> },
     { path: '/testStore', element: <TestStore /> },
     { path: '/babylonSkyBox', element: <BabylonSkyBox /> },
     { path: '/pbrMaterials', element: <Pbr /> },

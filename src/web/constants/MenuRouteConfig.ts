@@ -12,4 +12,5 @@ export const MenuRouteConfig: MenuRouteConfigType = {
   '30': '/ktx2',
   '32': '/threeLoadGLTF',
   '34': '/reactThreeFilberDemo1',
+  '36': '/babylonShdow',
 };
