@@ -39,7 +39,10 @@ const MenuConfig = () => {
         getItem('shadow', '36'),
         getItem('', '19', <div>library</div>),
       ]),
-      getItem('', '31', <div>three</div>, [getItem('loadGLTF & animate', '32')]),
+      getItem('', '31', <div>three</div>, [
+        getItem('loadGLTF & animate', '32'),
+        getItem('shadow', '37'),
+      ]),
       getItem('', '33', <div>react-three-filber</div>, [getItem('shadow & cannon', '34')]),
     ]),
     getItem('store', '22', <DatabaseOutlined />, [

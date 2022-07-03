@@ -127,7 +127,7 @@ class GameScene extends BABYLON.Scene {
   }
 }
 
-function BabylonShdow() {
+function BabylonShadow() {
   useEffect(() => {
     createEngine().then(engine => {
       // create scene
@@ -145,4 +145,4 @@ function BabylonShdow() {
     </>
   );
 }
-export default memo(BabylonShdow);
+export default memo(BabylonShadow);
