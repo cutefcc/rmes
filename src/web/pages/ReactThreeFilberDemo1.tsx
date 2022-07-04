@@ -1,8 +1,8 @@
-import { Canvas, ThreeEvent } from '@react-three/fiber';
+import { Canvas } from '@react-three/fiber';
 import { OrbitControls, PerspectiveCamera } from '@react-three/drei';
 import { Physics, usePlane, useBox } from '@react-three/cannon';
 
-// 涉及到shadow cannon 循环组件
+// 涉及到shadow cannon 循环组件 click 事件
 
 type BoxProps = {
   key: number;
@@ -24,9 +24,19 @@ function App() {
     );
   };
   const Box = (props: BoxProps) => {
-    const [ref, api] = useBox<THREE.Mesh>(() => ({ mass: 1, position: props.position }));
+    const [ref, api] = useBox<THREE.Mesh<THREE.BoxGeometry, THREE.MeshStandardMaterial>>(() => ({
+      mass: 1,
+      position: props.position,
+    }));
     return (
-      <mesh ref={ref} castShadow>
+      <mesh
+        ref={ref}
+        castShadow
+        onClick={e => {
+          // console.log('click', e);
+          ref.current?.material.color.set('green');
+        }}
+      >
         <boxGeometry attach="geometry" args={[1, 1, 1]} />
         <meshStandardMaterial attach="material" color="hotpink" />
       </mesh>
