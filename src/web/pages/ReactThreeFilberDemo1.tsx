@@ -39,9 +39,9 @@ function App() {
         onPointerOver={e => {
           ref.current?.material.color.set('#f60');
         }}
-        onPointerOut={e => {
-          ref.current?.material.color.set('hotpink');
-        }}
+        // onPointerOut={e => {
+        //   ref.current?.material.color.set('hotpink');
+        // }}
       >
         <boxGeometry attach="geometry" args={[1, 1, 1]} />
         <meshStandardMaterial attach="material" color="hotpink" />
