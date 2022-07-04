@@ -14,56 +14,101 @@ import { LightConstants } from '@babylonjs/core/Lights/lightConstants';
 // 如果 zNear 和 zFar 的值相同，那么相机就是一个正交相机。就没有近大远小的效果了
 // zNear 和 zFar之间的距离就是相机的视角。
 // zFar 一定要大于 zNear，否则会出现渲染问题。
-
+let clickNum = 0;
+const raycaster = new THREE.Raycaster();
+let pointer = new THREE.Vector2();
 let mixer: THREE.AnimationMixer;
-
-const createLight = scene => {
-  const light = new THREE.DirectionalLight();
-  light.castShadow = true;
-  light.shadow.mapSize.width = 512;
-  light.shadow.mapSize.height = 512;
-  light.shadow.camera.near = 0.5;
-  light.shadow.camera.far = 100;
-  light.position.z = 10;
-  light.position.y = 5;
-  // 添加灯光到场景
-  scene.add(light);
-
-  // 灯光helper
-  const helper = new THREE.DirectionalLightHelper(light);
-  // camerraHeaper
-  const cameraHelper = new THREE.CameraHelper(light.shadow.camera);
-  scene.add(helper);
-  scene.add(cameraHelper);
-};
-
-const createGround = scene => {
-  const planeGeometry = new THREE.PlaneGeometry(10, 10);
-  const plane = new THREE.Mesh(planeGeometry, new THREE.MeshPhongMaterial());
-  plane.rotateX(-Math.PI / 2);
-  plane.position.y = 0;
-  plane.receiveShadow = true;
-  scene.add(plane);
-};
-
-const addBox = scene => {
-  const geometry = new THREE.BoxGeometry(1, 1, 1);
-  const material = new THREE.MeshStandardMaterial({ color: 0x00ff00 });
-  const cube = new THREE.Mesh(geometry, material);
-  cube.castShadow = true; //  消费投影
-  cube.receiveShadow = true; //default
-  cube.position.y = 0.5;
-  gsap.to(cube.rotation, {
-    duration: 3,
-    y: Math.PI * 2,
-    repeat: -1,
-    yoyo: true,
-    ease: 'linear',
+function bindEvent<T extends THREE.Object3D>(
+  renderer,
+  scene: THREE.Scene,
+  target: T,
+  type: string,
+  callback: (intersect: THREE.Intersection<T>[]) => void
+) {
+  renderer?.domElement.addEventListener(type, () => {
+    // 单个 判断射线是否与我们的mesh相交
+    // const intersects = this.raycaster.intersectObject<T>(target);
+    // 多个
+    const intersects = raycaster.intersectObjects<T>(scene.children);
+    // scene.children 是一个数组，里面存放的是所有的mesh
+    if (intersects.length > 0) {
+      callback(intersects);
+    }
   });
-  scene.add(cube);
-};
+}
 
 function ThreeShadow() {
+  const createLight = (scene: THREE.Scene) => {
+    scene.add(new THREE.AmbientLight(0xffffff, 0.5)); // 环境光，颜色，强度
+    const light = new THREE.DirectionalLight(0xffffff, 3); // 平行光，颜色，强度
+    light.position.set(3, 0, 3);
+    light.castShadow = true; // 平行光设置 投影
+
+    light.shadow.mapSize.width = 512; // 平行光投影 的 宽度
+    light.shadow.mapSize.height = 512; // 平行光投影 的 长度
+    light.shadow.radius = 2;
+
+    light.shadow.camera.near = 0.5;
+    light.shadow.camera.far = 30;
+
+    light.shadow.camera.visible = true;
+    // 添加灯光到场景
+    scene.add(light);
+    // 灯光helper
+    // const helper = new THREE.DirectionalLightHelper(light);
+    // scene.add(helper);
+    // // camerraHeaper
+    // const cameraHelper = new THREE.CameraHelper(light.shadow.camera);
+    // scene.add(cameraHelper);
+  };
+
+  const createGround = (scene: THREE.Scene) => {
+    const planeGeometry = new THREE.PlaneGeometry(10, 10);
+    const plane = new THREE.Mesh(planeGeometry, new THREE.MeshPhongMaterial());
+    plane.position.y = 0;
+    plane.receiveShadow = true;
+    scene.add(plane);
+  };
+  const addBox = (scene: THREE.Scene, renderer) => {
+    const geometry = new THREE.BoxGeometry(1, 1, 1);
+    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+    const cube = new THREE.Mesh(geometry, material);
+    cube.castShadow = true; //  消费投影
+    cube.position.z = 1.5;
+    gsap.to(cube.rotation, {
+      duration: 3,
+      z: Math.PI * 2,
+      repeat: -1,
+      yoyo: true,
+      ease: 'linear',
+    });
+
+    // 绑定click 事件
+    bindEvent(renderer, scene, cube, 'click', intersect => {
+      clickNum++;
+      console.log('cube click', intersect, clickNum);
+      if (intersect.length > 0) {
+        intersect.forEach(item => {
+          // 可以根据这个id去判断是点击的哪一个mesh
+          if (item.object.id === 16) {
+            if (clickNum % 2 === 0) {
+              item.object.material.color.set(0x00ff00);
+            } else {
+              item.object.material.color.set(0xff0000);
+            }
+          } else {
+            if (clickNum % 2 === 0) {
+              item.object.material.color.set(0x0000ff);
+            } else {
+              item.object.material.color.set(0xff6000);
+            }
+          }
+        });
+      }
+    });
+    scene.add(cube);
+  };
+
   useEffect(() => {
     const canvas = document.querySelector<HTMLCanvasElement>('#canvas')!;
     // 相机
@@ -89,12 +134,20 @@ function ThreeShadow() {
     // 添加地面
     createGround(scene);
     // 添加立方体
-    addBox(scene);
+    addBox(scene, renderer);
     // 理解为轨道相机
     controls.update();
     const clock = new THREE.Clock();
+
+    renderer.domElement.addEventListener('pointermove', event => {
+      // 计算一个 -1 到 1的值，pointer 就能实时取到我们光标的位置
+      pointer.x = (event.clientX / window.innerWidth) * 2 - 1;
+      pointer.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    });
     function animate() {
       requestAnimationFrame(animate);
+      // 更新射线 发射射线
+      raycaster.setFromCamera(pointer, camera);
       controls.update();
       // 更新动画
       mixer?.update(clock.getDelta());
@@ -104,10 +157,6 @@ function ThreeShadow() {
     animate();
   }, []);
 
-  return (
-    <>
-      <canvas id="canvas" className="w-full h-full"></canvas>
-    </>
-  );
+  return <canvas id="canvas" className="w-full h-full"></canvas>;
 }
 export default memo(ThreeShadow);
