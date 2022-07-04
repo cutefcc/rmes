@@ -2,7 +2,7 @@ import { Canvas } from '@react-three/fiber';
 import { OrbitControls, PerspectiveCamera } from '@react-three/drei';
 import { Physics, usePlane, useBox } from '@react-three/cannon';
 
-// 涉及到shadow cannon 循环组件 click 事件
+// 涉及到shadow cannon 循环组件 click 事件[原生three绑定事件很麻烦，在react-three中没有这个问题]
 
 type BoxProps = {
   key: number;
@@ -35,6 +35,12 @@ function App() {
         onClick={e => {
           // console.log('click', e);
           ref.current?.material.color.set('green');
+        }}
+        onPointerOver={e => {
+          ref.current?.material.color.set('#f60');
+        }}
+        onPointerOut={e => {
+          ref.current?.material.color.set('hotpink');
         }}
       >
         <boxGeometry attach="geometry" args={[1, 1, 1]} />
