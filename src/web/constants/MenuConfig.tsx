@@ -47,6 +47,7 @@ const MenuConfig = () => {
         getItem('shadow & cannon', '34'),
         getItem('loadModel', '38'),
       ]),
+      getItem('', '39', <div>game</div>, [getItem('spaceship', '40')]),
     ]),
     getItem('store', '22', <DatabaseOutlined />, [
       getItem('Jotai', '23'),
