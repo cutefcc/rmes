@@ -1,6 +1,8 @@
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, PerspectiveCamera } from '@react-three/drei';
+import { OrbitControls, PerspectiveCamera, Html, useProgress, useGLTF } from '@react-three/drei';
 import { Physics, usePlane, useBox } from '@react-three/cannon';
+import { Suspense } from 'react';
+// import Loading from '@components/Loading';
 
 // 涉及到shadow cannon 循环组件 click 事件[原生three绑定事件很麻烦，在react-three中没有这个问题]
 

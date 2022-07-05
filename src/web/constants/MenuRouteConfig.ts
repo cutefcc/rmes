@@ -14,4 +14,5 @@ export const MenuRouteConfig: MenuRouteConfigType = {
   '34': '/reactThreeFilberDemo1',
   '36': '/babylonShadow',
   '37': '/threeShadow',
+  '38': '/reactThreeFilberLoadModel',
 };

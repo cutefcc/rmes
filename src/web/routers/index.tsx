@@ -8,6 +8,7 @@ const Pbr = lazy(() => import('@pages/Pbr'));
 const Ktx2 = lazy(() => import('@pages/Ktx2'));
 const ThreeLoadGLTF = lazy(() => import('@pages/ThreeLoadGLTF'));
 const ReactThreeFilberDemo1 = lazy(() => import('@pages/ReactThreeFilberDemo1'));
+const ReactThreeFilberLoadModel = lazy(() => import('@pages/ReactThreeFilberLoadModel'));
 const Echarts = lazy(() => import('@pages/Echarts'));
 const BabylonShadow = lazy(() => import('@pages/BabylonShadow'));
 const ThreeShadow = lazy(() => import('@pages/ThreeShadow'));
@@ -60,6 +61,7 @@ const mainRoutes = {
     { path: '/ktx2', element: <Ktx2 /> },
     { path: '/threeLoadGLTF', element: <ThreeLoadGLTF /> },
     { path: '/reactThreeFilberDemo1', element: <ReactThreeFilberDemo1 /> },
+    { path: '/reactThreeFilberLoadModel', element: <ReactThreeFilberLoadModel /> },
     {
       path: '/testZustand',
       element: <TestZustand />,
