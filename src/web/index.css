@@ -6,3 +6,10 @@ body {
   overflow-y: hidden;
   font-size: 16px;
 }
+:root {
+  --mainColor: red;
+  --blue: blue;
+}
+a {
+  color: var(--blue);
+}

@@ -63,6 +63,7 @@ const MenuConfig = () => {
           <div className="ml-10">echarts</div>
         </>
       ),
+      getItem('test-css', '41'),
     ]),
   ];
 };

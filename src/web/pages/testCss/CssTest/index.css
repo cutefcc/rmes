@@ -1,0 +1,6 @@
+.csstest {
+  & a {
+    color: var(--mainColor);
+    font-size: 30px;
+  }
+}
