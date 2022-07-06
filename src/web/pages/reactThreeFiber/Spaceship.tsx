@@ -9,6 +9,7 @@ import SkyBox from '@components/ReactThreeFiber/SkyBox';
 function App() {
   return (
     <Canvas shadows={true}>
+      {/* <Canvas shadows={true} dpr={[1,2]}>  在高清显示器上可能会糊*/}
       <PerspectiveCamera makeDefault position={[-8, 12, 32]} />
       <OrbitControls />
       <ambientLight />
