@@ -1,25 +1,25 @@
-const { resolve } = require("path");
-const merge = require("webpack-merge");
-const argv = require("yargs-parser")(process.argv.slice(2));
-const _mode = argv.mode || "development";
+const { resolve } = require('path');
+const merge = require('webpack-merge');
+const argv = require('yargs-parser')(process.argv.slice(2));
+const _mode = argv.mode || 'development';
 const _mergeConfig = require(`./config/webpack.${_mode}.js`);
-const _modeflag = _mode === "production" ? true : false;
-const WebpackBar = require("webpackbar");
-const Dotenv = require("dotenv-webpack");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const _modeflag = _mode === 'production' ? true : false;
+const WebpackBar = require('webpackbar');
+const Dotenv = require('dotenv-webpack');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // const { ProvidePlugin } = require('webpack');
 // const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 
 const webpackBaseConfig = {
   entry: {
-    main: resolve("src/web/index.tsx"),
+    main: resolve('src/web/index.tsx'),
   },
   output: {
-    path: resolve(process.cwd(), "dist"),
+    path: resolve(process.cwd(), 'dist'),
   },
   cache: {
-    type: "filesystem",
+    type: 'filesystem',
     // cacheDirectory: resolve(__dirname, '.temp'),
   },
   // performance: {
@@ -33,29 +33,37 @@ const webpackBaseConfig = {
         test: /\.(ts|tsx)$/,
         // include: '/node_modules/',
         use: {
-          loader: "swc-loader",
+          loader: 'swc-loader',
         },
       },
       //test: /\.(png|woff|woff2|eot|ttf|svg)$/,
       {
         test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/i,
-        type: "asset/resource",
+        type: 'asset/resource',
       },
       {
         test: /\.css$/i,
-        include: [
-          resolve(__dirname, "src"),
-          resolve(__dirname, "node_modules"),
-        ],
+        // include: [resolve(__dirname, 'src'), resolve(__dirname, 'node_modules')],
+        include: [resolve(__dirname, 'src')],
+
         use: [
           MiniCssExtractPlugin.loader,
-          { loader: "css-loader", options: { importLoaders: 1 } },
-          "postcss-loader",
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              // modules: true,
+              // modules: {
+              //   localIdentName: '[local]___[hash:base64:5]',
+              // },
+            },
+          },
+          'postcss-loader',
         ],
       },
       {
         test: /\.(png|jpg|svg)$/,
-        type: "asset",
+        type: 'asset',
       },
       // {
       //   resourceQuery: /raw-lingui/,
@@ -65,10 +73,10 @@ const webpackBaseConfig = {
   },
   optimization: {
     runtimeChunk: {
-      name: "runtime",
+      name: 'runtime',
     },
     splitChunks: {
-      chunks: "all",
+      chunks: 'all',
       maxAsyncRequests: 3,
       cacheGroups: {},
     },
@@ -76,28 +84,24 @@ const webpackBaseConfig = {
   resolve: {
     // fallback: { url: false, os: false },
     alias: {
-      "@components": resolve("src/web/components"),
-      "@hooks": resolve("src/web/hooks"),
-      "@pages": resolve("src/web/pages"),
-      "@layouts": resolve("src/web/layouts"),
-      "@assets": resolve("src/web/assets"),
-      "@store": resolve("src/web/store"),
-      "@service": resolve("src/web/service"),
-      "@utils": resolve("src/web/utils"),
-      "@lib": resolve("src/web/lib"),
-      "@constants": resolve("src/web/constants"),
+      '@components': resolve('src/web/components'),
+      '@hooks': resolve('src/web/hooks'),
+      '@pages': resolve('src/web/pages'),
+      '@layouts': resolve('src/web/layouts'),
+      '@assets': resolve('src/web/assets'),
+      '@store': resolve('src/web/store'),
+      '@service': resolve('src/web/service'),
+      '@utils': resolve('src/web/utils'),
+      '@lib': resolve('src/web/lib'),
+      '@constants': resolve('src/web/constants'),
     },
-    extensions: [".js", ".ts", ".tsx", "jsx", ".css"],
+    extensions: ['.js', '.ts', '.tsx', 'jsx', '.css'],
   },
   plugins: [
     // new NodePolyfillPlugin(),
     new MiniCssExtractPlugin({
-      filename: _modeflag
-        ? "styles/[name].[contenthash:5].css"
-        : "styles/[name].css",
-      chunkFilename: _modeflag
-        ? "styles/[name].[contenthash:5].css"
-        : "styles/[name].css",
+      filename: _modeflag ? 'styles/[name].[contenthash:5].css' : 'styles/[name].css',
+      chunkFilename: _modeflag ? 'styles/[name].[contenthash:5].css' : 'styles/[name].css',
       ignoreOrder: false,
     }),
     // new ProvidePlugin({

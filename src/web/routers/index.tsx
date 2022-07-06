@@ -20,6 +20,7 @@ const BabylonSkyBox = lazy(() => import('@pages/babylon/BabylonSkyBox'));
 const TestReactUse = lazy(() => import('@pages/TestReactUse'));
 const Spaceship = lazy(() => import('@pages/reactThreeFiber/Spaceship'));
 const CssTest = lazy(() => import('@pages/testCss/CssTest'));
+const ReactVirtuoso = lazy(() => import('@pages/ReactVirtuoso'));
 import { Link, RouteObject } from 'react-router-dom';
 const Routes: RouteObject[] = [];
 const Layout = () => (
@@ -68,6 +69,7 @@ const mainRoutes = {
     { path: '/reactThreeFilberLoadModel', element: <ReactThreeFilberLoadModel /> },
     { path: '/spaceship', element: <Spaceship /> },
     { path: '/cssTest', element: <CssTest /> },
+    { path: '/ReactVirtuoso', element: <ReactVirtuoso /> },
     {
       path: '/testZustand',
       element: <TestZustand />,
