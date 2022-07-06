@@ -18,7 +18,7 @@ const TestJotai = lazy(() => import('@pages/TestJotai'));
 const TestStore = lazy(() => import('@pages/TestStore'));
 const BabylonSkyBox = lazy(() => import('@pages/babylon/BabylonSkyBox'));
 const TestReactUse = lazy(() => import('@pages/TestReactUse'));
-const Spaceship = lazy(() => import('@pages/reactThreeFiber/spaceship'));
+const Spaceship = lazy(() => import('@pages/reactThreeFiber/Spaceship'));
 import { Link, RouteObject } from 'react-router-dom';
 const Routes: RouteObject[] = [];
 const Layout = () => (
