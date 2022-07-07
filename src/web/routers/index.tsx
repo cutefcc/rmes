@@ -23,6 +23,7 @@ const CssTest = lazy(() => import('@pages/testCss/CssTest'));
 const ReactVirtuoso = lazy(() => import('@pages/ReactVirtuoso'));
 const ReactSvg = lazy(() => import('@pages/ReactSvg'));
 const ReactCalendarHeatmap = lazy(() => import('@pages/ReactCalendarHeatmap'));
+const ReactTerminalUi = lazy(() => import('@pages/ReactTerminalUi'));
 import { Link, RouteObject } from 'react-router-dom';
 const Routes: RouteObject[] = [];
 const Layout = () => (
@@ -74,6 +75,7 @@ const mainRoutes = {
     { path: '/ReactVirtuoso', element: <ReactVirtuoso /> },
     { path: '/react-svg', element: <ReactSvg /> },
     { path: '/react-calendar-heatmap', element: <ReactCalendarHeatmap /> },
+    { path: '/react-terminal-ui', element: <ReactTerminalUi /> },
     {
       path: '/testZustand',
       element: <TestZustand />,

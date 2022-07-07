@@ -20,4 +20,5 @@ export const MenuRouteConfig: MenuRouteConfigType = {
   '42': '/reactVirtuoso',
   '43': '/react-svg',
   '44': '/react-calendar-heatmap',
+  '45': '/react-terminal-ui',
 };

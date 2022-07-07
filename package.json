@@ -91,6 +91,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0",
     "react-svg": "^15.1.1",
+    "react-terminal-ui": "^0.2.1",
     "react-tooltip": "^4.2.21",
     "react-virtuoso": "^2.16.1",
     "recoil": "^0.7.3-alpha.2",
