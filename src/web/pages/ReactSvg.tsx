@@ -11,7 +11,11 @@ const ReactSvg = () => {
         <ReactSVG src="http://www.cutefcc.com:81/svg/evil-halloween-hand-svgrepo-com.svg" />
         <ReactSVG src="http://www.cutefcc.com:81/svg/axe-bloody-halloween-svgrepo-com.svg" />
         <ReactSVG src="http://www.cutefcc.com:81/svg/ghost-halloween-horror-2-svgrepo-com.svg" />
+        <div style={{ width: '128px', height: '128px' }}>
+          <ReactSVG src="http://www.cutefcc.com:81/svg/blobanimation.svg" />
+        </div>
       </div>
+      <div>上面第四个svg 动态图生成：https://blobanimation.com/</div>
     </>
   );
 };
