@@ -22,6 +22,7 @@ const Spaceship = lazy(() => import('@pages/reactThreeFiber/Spaceship'));
 const CssTest = lazy(() => import('@pages/testCss/CssTest'));
 const ReactVirtuoso = lazy(() => import('@pages/ReactVirtuoso'));
 const ReactSvg = lazy(() => import('@pages/ReactSvg'));
+const ReactCalendarHeatmap = lazy(() => import('@pages/ReactCalendarHeatmap'));
 import { Link, RouteObject } from 'react-router-dom';
 const Routes: RouteObject[] = [];
 const Layout = () => (
@@ -72,6 +73,7 @@ const mainRoutes = {
     { path: '/cssTest', element: <CssTest /> },
     { path: '/ReactVirtuoso', element: <ReactVirtuoso /> },
     { path: '/react-svg', element: <ReactSvg /> },
+    { path: '/react-calendar-heatmap', element: <ReactCalendarHeatmap /> },
     {
       path: '/testZustand',
       element: <TestZustand />,

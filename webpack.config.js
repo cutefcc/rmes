@@ -43,8 +43,8 @@ const webpackBaseConfig = {
       },
       {
         test: /\.css$/i,
-        // include: [resolve(__dirname, 'src'), resolve(__dirname, 'node_modules')],
-        include: [resolve(__dirname, 'src')],
+        include: [resolve(__dirname, 'src'), resolve(__dirname, 'node_modules')],
+        // include: [resolve(__dirname, 'src')],
 
         use: [
           MiniCssExtractPlugin.loader,
