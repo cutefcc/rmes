@@ -18,4 +18,5 @@ export const MenuRouteConfig: MenuRouteConfigType = {
   '40': '/spaceship',
   '41': '/cssTest',
   '42': '/reactVirtuoso',
+  '43': '/react-svg',
 };

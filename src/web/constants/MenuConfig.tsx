@@ -65,6 +65,7 @@ const MenuConfig = () => {
       ),
       getItem('test-css', '41'),
       getItem('react-virtuoso', '42'),
+      getItem('react-svg', '43'),
     ]),
   ];
 };
