@@ -16,7 +16,7 @@ const ReactSvg = () => {
         </div>
       </div>
       <div>上面第四个svg 动态图生成：https://blobanimation.com/</div>
-      <div>免费svg下载网址：https://simpleicons.org/</div>
+      <div>免费svg下载网址：https://simpleicons.org/、https://flagicons.lipis.dev/</div>
     </>
   );
 };
