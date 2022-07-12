@@ -68,6 +68,7 @@ const MenuConfig = () => {
       getItem('react-svg', '43'),
       getItem('react-calendar-heatmap', '44'),
       getItem('react-terminal-ui', '45'),
+      getItem('css-features-in-2022', '46'),
     ]),
   ];
 };

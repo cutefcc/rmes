@@ -24,6 +24,7 @@ const ReactVirtuoso = lazy(() => import('@pages/ReactVirtuoso'));
 const ReactSvg = lazy(() => import('@pages/ReactSvg'));
 const ReactCalendarHeatmap = lazy(() => import('@pages/ReactCalendarHeatmap'));
 const ReactTerminalUi = lazy(() => import('@pages/ReactTerminalUi'));
+const Css2022 = lazy(() => import('@pages/Css2022'));
 import { Link, RouteObject } from 'react-router-dom';
 const Routes: RouteObject[] = [];
 const Layout = () => (
@@ -76,6 +77,7 @@ const mainRoutes = {
     { path: '/react-svg', element: <ReactSvg /> },
     { path: '/react-calendar-heatmap', element: <ReactCalendarHeatmap /> },
     { path: '/react-terminal-ui', element: <ReactTerminalUi /> },
+    { path: '/2022css', element: <Css2022 /> },
     {
       path: '/testZustand',
       element: <TestZustand />,

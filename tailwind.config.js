@@ -3,6 +3,7 @@ module.exports = {
   content: ['./src/**/*.tsx', './src/**/*.html'],
   darkMode: false,
   theme: {
+    // Customizing Spacing
     spacing: {
       1: '1px',
       2: '2px',

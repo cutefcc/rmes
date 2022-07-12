@@ -21,4 +21,5 @@ export const MenuRouteConfig: MenuRouteConfigType = {
   '43': '/react-svg',
   '44': '/react-calendar-heatmap',
   '45': '/react-terminal-ui',
+  '46': '/2022css',
 };
