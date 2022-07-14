@@ -14,6 +14,7 @@ function App() {
   };
   const LoadAsyncModel = () => {
     const glb = useGLTF(`${ModelsHost}library.glb`);
+    // const glb = useGLTF(`${ModelsHost}cqyd_models/stl/Base.stl`);
     return <primitive object={glb.scene}></primitive>;
   };
   return (
