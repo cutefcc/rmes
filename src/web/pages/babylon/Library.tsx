@@ -51,7 +51,7 @@ class GameScene extends BABYLON.Scene {
   }
 
   async loadModel() {
-    await BABYLON.SceneLoader.ImportMeshAsync('', `${ModelsHost}`, 'cqyd_models/stl/Base.stl').then(
+    await BABYLON.SceneLoader.ImportMeshAsync('', `${ModelsHost}`, 'cqyd_models/stl/Base.glb').then(
       result => {
         // await BABYLON.SceneLoader.ImportMeshAsync('', `${ModelsHost}`, 'library.glb').then(result => {
         // 缩放
