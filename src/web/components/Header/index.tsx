@@ -26,19 +26,18 @@ function GetMenuItem(props: GetMenuItemProps): JSX.Element {
   );
 }
 
-function MenuPopupState() {
+function MenuPopupState(props) {
+  const { text, routeKey } = props;
   return (
     <PopupState variant="popover" popupId="demo-popup-menu">
       {popupState => (
         <>
-          <button className="btn-62" {...bindTrigger(popupState)}>
-            <span>babylon</span>
-          </button>
-          {/* <Button className="h-40" variant="contained" {...bindTrigger(popupState)}>
-            babylon
-          </Button> */}
+          {/* <button className="btn-62" {...bindTrigger(popupState)}>
+            <span>{text}</span>
+          </button> */}
+          <Button {...bindTrigger(popupState)}>{text}</Button>
           <Menu {...bindMenu(popupState)}>
-            <GetMenuItem routeKey={['28', '29', '30', '36']} onClick={popupState.close} />
+            <GetMenuItem routeKey={routeKey} onClick={popupState.close} />
           </Menu>
         </>
       )}
@@ -47,8 +46,11 @@ function MenuPopupState() {
 }
 const Header = () => (
   <div className="h-64 bg-slate-900 pl-60 flex justify-start items-center">
-    {/* <div className="text-white h-full">playground</div> */}
-    <MenuPopupState />
+    <MenuPopupState text="babylon" routeKey={['28', '29', '30', '36']} />
+    <MenuPopupState text="three" routeKey={['32', '37']} />
+    <MenuPopupState text="react-three-fiber" routeKey={['34', '38']} />
+    <MenuPopupState text="store" routeKey={['23', '25', '24']} />
+    <MenuPopupState text="daily" routeKey={['27', '40', '41', '42', '43', '44', '45', '46']} />
   </div>
 );
 export default Header;
