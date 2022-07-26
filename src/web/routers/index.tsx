@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import Loading from '@components/Loading';
 import MainLayout from '@layouts/MainLayout';
 import Home from '@pages/Home';
+import Header from '@components/Header';
 const TestZustand = lazy(() => import('@pages/TestZustand'));
 const Library = lazy(() => import('@pages/babylon/Library'));
 const Pbr = lazy(() => import('@pages/babylon/Pbr'));
@@ -28,9 +29,12 @@ const Css2022 = lazy(() => import('@pages/Css2022'));
 import { Link, RouteObject } from 'react-router-dom';
 const Routes: RouteObject[] = [];
 const Layout = () => (
-  <Suspense fallback={<Loading />}>
-    <MainLayout />
-  </Suspense>
+  <>
+    <Header />
+    <Suspense fallback={<Loading />}>
+      <MainLayout />
+    </Suspense>
+  </>
 );
 
 function NoMatch() {

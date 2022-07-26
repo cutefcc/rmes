@@ -90,30 +90,28 @@ const loadModles = scene => {
 
 function Home() {
   useEffect(() => {
-    const canvas = document.querySelector<HTMLCanvasElement>('#canvas')!;
-    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true }); // antialias 扛锯齿
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.shadowMap.enabled = true;
-    const scene = new THREE.Scene();
-    scene.add(camera);
-    const controls = new OrbitControls(camera, renderer.domElement);
-    camera.position.z = 3;
-
-    createLight(scene);
-    loadModles(scene);
-    // createGround(scene);
-    // 理解为轨道相机
-    controls.update();
-    const clock = new THREE.Clock();
-    function animate() {
-      requestAnimationFrame(animate);
-      controls.update();
-      // 更新动画
-      mixer?.update(clock.getDelta());
-      renderer.render(scene, camera);
-    }
-
-    animate();
+    // const canvas = document.querySelector<HTMLCanvasElement>('#canvas')!;
+    // const renderer = new THREE.WebGLRenderer({ canvas, antialias: true }); // antialias 扛锯齿
+    // renderer.setSize(window.innerWidth, window.innerHeight);
+    // renderer.shadowMap.enabled = true;
+    // const scene = new THREE.Scene();
+    // scene.add(camera);
+    // const controls = new OrbitControls(camera, renderer.domElement);
+    // camera.position.z = 3;
+    // createLight(scene);
+    // loadModles(scene);
+    // // createGround(scene);
+    // // 理解为轨道相机
+    // controls.update();
+    // const clock = new THREE.Clock();
+    // function animate() {
+    //   requestAnimationFrame(animate);
+    //   controls.update();
+    //   // 更新动画
+    //   mixer?.update(clock.getDelta());
+    //   renderer.render(scene, camera);
+    // }
+    // animate();
   }, []);
 
   return (

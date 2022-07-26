@@ -12,6 +12,11 @@ module.exports = {
       5: '5px',
       6: '6px',
       10: '10px',
+      24: '24px',
+      32: '32px',
+      40: '40px',
+      60: '60px',
+      64: '64px',
     },
     extend: {
       colors: {
