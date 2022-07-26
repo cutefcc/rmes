@@ -12,6 +12,10 @@ body {
   --mainColor: red;
   --blue: blue;
 }
+#canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
 a {
   color: var(--blue);
 }
