@@ -2,6 +2,7 @@ export type MenuRouteConfigType = {
   [key in string]: { route: string; label: string };
 };
 export const MenuRouteConfig: MenuRouteConfigType = {
+  '0': { route: '/', label: 'Home' },
   '19': { route: '/library', label: 'library' },
   '23': { route: '/testJotai', label: 'Jotai' },
   '24': { route: '/testStore', label: 'testStore' },

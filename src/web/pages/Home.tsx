@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import { Mesh } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { ModelsHost } from '@constants/ModelsConfig';
 import gsap from 'gsap';
 import { memo, useEffect } from 'react';
 
@@ -116,7 +117,8 @@ function Home() {
 
   return (
     <>
-      <canvas id="canvas" className="w-full h-full"></canvas>
+      {/* <canvas id="canvas" className="w-full h-full"></canvas> */}
+      <img src={`${ModelsHost}fengbaobao.png`} className="mx-auto" />
     </>
   );
 }
