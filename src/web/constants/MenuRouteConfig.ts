@@ -22,4 +22,5 @@ export const MenuRouteConfig: MenuRouteConfigType = {
   '44': { route: '/react-calendar-heatmap', label: 'react-calendar-heatmap' },
   '45': { route: '/react-terminal-ui', label: 'react-terminal-ui' },
   '46': { route: '/2022css', label: '2022css' },
+  '47': { route: '/record', label: 'Record' },
 };
