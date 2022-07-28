@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.tsx', './src/**/*.html'],
-  darkMode: false,
+  darkMode: true,
   theme: {
     // Customizing Spacing
     spacing: {
