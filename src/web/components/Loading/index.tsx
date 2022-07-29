@@ -1,14 +1,15 @@
-import './index.css';
 const Loading = () => (
-  <>
-    <div className="bg-indigo-100 w-full h-screen flex justify-center loading">
-      <div>
-        <span className="inline-block">
-          {/* <SyncOutlined spin className="mr-10" /> */}
-          <span className="inline-block loadingText">加载中...</span>
-        </span>
-      </div>
+  <div className="bg-slate-200 contentRoot flex justify-center">
+    <div className="lds-roller h-80 m-auto">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
     </div>
-  </>
+  </div>
 );
 export default Loading;

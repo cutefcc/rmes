@@ -2,7 +2,7 @@ import './index.css';
 const CssTest = () => {
   return (
     <>
-      <div className="csstest">
+      <div className="csstest bg-gray-600">
         custom properties & var():
         <a>test a</a>
         <p>一些css 写的 loading效果 from https://loading.io/css/</p>

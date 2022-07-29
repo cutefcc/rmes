@@ -6,7 +6,7 @@ const ReactSvg = () => {
     { type: LineType.Input, value: 'Some previous input received' },
   ]);
   return (
-    <div className="container h-full">
+    <div className="h-full">
       <Terminal
         name="React Terminal Usage Example"
         colorMode={ColorMode.Dark}

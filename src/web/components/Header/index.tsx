@@ -60,7 +60,7 @@ const Header = () => {
       <MenuPopupState text="store" routeKey={['23', '25', '24']} />
       <MenuPopupState
         text="daily"
-        routeKey={['27', '40', '41', '42', '43', '44', '45', '46', '47']}
+        routeKey={['27', '40', '41', '42', '43', '44', '45', '46', '47', '48']}
       />
     </div>
   );

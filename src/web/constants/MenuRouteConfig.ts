@@ -24,4 +24,5 @@ export const MenuRouteConfig: MenuRouteConfigType = {
   '45': { route: '/react-terminal-ui', label: 'react-terminal-ui' },
   '46': { route: '/2022css', label: '2022css' },
   '47': { route: '/record', label: 'Record' },
+  '48': { route: '/loading', label: 'Loading' },
 };

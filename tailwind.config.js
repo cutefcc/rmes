@@ -4,20 +4,11 @@ module.exports = {
   darkMode: true,
   theme: {
     // Customizing Spacing
-    spacing: {
-      1: '1px',
-      2: '2px',
-      3: '3px',
-      4: '4px',
-      5: '5px',
-      6: '6px',
-      10: '10px',
-      24: '24px',
-      32: '32px',
-      40: '40px',
-      60: '60px',
-      64: '64px',
-    },
+    // customizimg 0 - 0px  1 - 1px  ... ... 999 - 999px
+    spacing: Array(1000)
+      .fill('1')
+      .map((item, index) => ({ [index]: `${index}px` }))
+      .reduce((pre, curr) => ({ ...pre, ...curr })),
     extend: {
       colors: {
         animation: {
