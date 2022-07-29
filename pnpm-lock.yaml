@@ -9,6 +9,8 @@ specifiers:
   '@babylonjs/loaders': ^5.12.1
   '@babylonjs/materials': ^5.16.0
   '@babylonjs/serializers': ^5.16.0
+  '@emotion/core': ^11.0.0
+  '@emotion/css': ^11.9.0
   '@emotion/react': ^11.9.3
   '@emotion/styled': ^11.9.3
   '@koa/router': ^10.1.1
@@ -103,6 +105,8 @@ dependencies:
   '@babylonjs/loaders': 5.16.0_k4dfn7twbkk3d6qhznf236rz2e
   '@babylonjs/materials': 5.16.0_@babylonjs+core@5.16.0
   '@babylonjs/serializers': 5.16.0_k4dfn7twbkk3d6qhznf236rz2e
+  '@emotion/core': 11.0.0
+  '@emotion/css': 11.9.0_@babel+core@7.18.9
   '@emotion/react': 11.9.3_szkdlbnthht4v3jvm76fn7u6na
   '@emotion/styled': 11.9.3_y2x62d5bbinncmisoeyv36jqse
   '@koa/router': 10.1.1
@@ -837,6 +841,26 @@ packages:
       '@emotion/utils': 1.1.0
       '@emotion/weak-memoize': 0.2.5
       stylis: 4.0.13
+    dev: false
+
+  /@emotion/core/11.0.0:
+    resolution: {integrity: sha512-w4sE3AmHmyG6RDKf6mIbtHpgJUSJ2uGvPQb8VXFL7hFjMPibE8IiehG8cMX3Ztm4svfCQV6KqusQbeIOkurBcA==}
+    dev: false
+
+  /@emotion/css/11.9.0_@babel+core@7.18.9:
+    resolution: {integrity: sha512-S9UjCxSrxEHawOLnWw4upTwfYKb0gVQdatHejn3W9kPyXxmKv3HmjVfJ84kDLmdX8jR20OuDQwaJ4Um24qD9vA==}
+    peerDependencies:
+      '@babel/core': ^7.0.0
+    peerDependenciesMeta:
+      '@babel/core':
+        optional: true
+    dependencies:
+      '@babel/core': 7.18.9
+      '@emotion/babel-plugin': 11.9.5_@babel+core@7.18.9
+      '@emotion/cache': 11.9.3
+      '@emotion/serialize': 1.0.4
+      '@emotion/sheet': 1.1.1
+      '@emotion/utils': 1.1.0
     dev: false
 
   /@emotion/hash/0.8.0:

@@ -52,9 +52,8 @@ const webpackBaseConfig = {
             loader: 'css-loader',
             options: {
               importLoaders: 1,
-              // modules: true,
               // modules: {
-              //   localIdentName: '[local]___[hash:base64:5]',
+              //   localIdentName: '[path]__[name]__[local]',
               // },
             },
           },

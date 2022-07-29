@@ -74,6 +74,8 @@
     "@babylonjs/loaders": "^5.12.1",
     "@babylonjs/materials": "^5.16.0",
     "@babylonjs/serializers": "^5.16.0",
+    "@emotion/core": "^11.0.0",
+    "@emotion/css": "^11.9.0",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
     "@koa/router": "^10.1.1",

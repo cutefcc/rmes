@@ -1,4 +1,5 @@
 import { lazy, Suspense } from 'react';
+import { Link, RouteObject } from 'react-router-dom';
 import Loading from '@components/Loading';
 import MainLayout from '@layouts/MainLayout';
 import Home from '@pages/Home';
@@ -27,8 +28,6 @@ const ReactCalendarHeatmap = lazy(() => import('@pages/ReactCalendarHeatmap'));
 const ReactTerminalUi = lazy(() => import('@pages/ReactTerminalUi'));
 const Css2022 = lazy(() => import('@pages/Css2022'));
 const Record = lazy(() => import('@pages/Record'));
-// const Loading = lazy(() => import('@components/Loading'));
-import { Link, RouteObject } from 'react-router-dom';
 const Routes: RouteObject[] = [];
 const Layout = () => (
   <>
