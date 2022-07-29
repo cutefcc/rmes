@@ -1,7 +1,6 @@
 import { lazy, Suspense } from 'react';
-import { Link, RouteObject } from 'react-router-dom';
+import { Link, RouteObject, Outlet } from 'react-router-dom';
 import Loading from '@components/Loading';
-import MainLayout from '@layouts/MainLayout';
 import Home from '@pages/Home';
 import Header from '@components/Header';
 const TestZustand = lazy(() => import('@pages/TestZustand'));
@@ -33,7 +32,7 @@ const Layout = () => (
   <>
     <Header />
     <Suspense fallback={<Loading />}>
-      <MainLayout />
+      <Outlet />
     </Suspense>
   </>
 );
@@ -50,14 +49,6 @@ function NoMatch() {
   );
 }
 
-function Course() {
-  return (
-    <div>
-      <p>This is a great course. You're gonna love it!</p>
-      <Link to="/courses">See all courses</Link>
-    </div>
-  );
-}
 const mainRoutes = {
   path: '/',
   element: <Layout />,
@@ -85,14 +76,7 @@ const mainRoutes = {
     { path: '/2022css', element: <Css2022 /> },
     { path: '/record', element: <Record /> },
     { path: '/loading', element: <Loading /> },
-    {
-      path: '/testZustand',
-      element: <TestZustand />,
-      children: [
-        { index: true, element: <TestZustand /> },
-        { path: '/testZustand/:id', element: <Course /> },
-      ],
-    },
+    { path: '/testZustand', element: <TestZustand /> },
     { path: '*', element: <NoMatch /> },
   ],
 };
