@@ -8,6 +8,7 @@ const WebpackBar = require('webpackbar');
 const Dotenv = require('dotenv-webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 // const { ProvidePlugin } = require('webpack');
 // const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 
@@ -76,8 +77,41 @@ const webpackBaseConfig = {
     },
     splitChunks: {
       chunks: 'all',
-      maxAsyncRequests: 3,
-      cacheGroups: {},
+      cacheGroups: {
+        common: {
+          name: 'common',
+          chunks: 'all',
+          minChunks: 2,
+          priority: 1,
+          maxInitialRequests: 5,
+          enforce: true,
+          reuseExistingChunk: true,
+        },
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          chunks: 'initial',
+          name: 'vendor',
+          priority: 2,
+          enforce: true,
+          reuseExistingChunk: true,
+        },
+        echarts: {
+          test: /([\\/]node_modules[\\/]echarts[\\/])/,
+          chunks: 'all',
+          name: 'echarts',
+          priority: 5,
+          enforce: true,
+          reuseExistingChunk: true,
+        },
+        babylonjs: {
+          test: /([\\/]node_modules[\\/]@babylonjs[\\/])/,
+          chunks: 'all',
+          name: 'babylonjs',
+          priority: 6,
+          enforce: true,
+          reuseExistingChunk: true,
+        },
+      },
     },
   },
   resolve: {
@@ -109,6 +143,7 @@ const webpackBaseConfig = {
     new CleanWebpackPlugin(),
     new WebpackBar(),
     new Dotenv(),
+    // new BundleAnalyzerPlugin(),
   ],
 };
 module.exports = merge.default(webpackBaseConfig, _mergeConfig);
