@@ -2,6 +2,7 @@ import { useTexture, Stars } from '@react-three/drei';
 import * as THREE from 'three';
 import { ModelsHost } from '@constants/ModelsConfig';
 import { useLayoutEffect } from 'react';
+
 const SkyBox = () => {
   // 加载textures
   const texture = useTexture(`${ModelsHost}textures/galaxy.jpg`);
