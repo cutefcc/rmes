@@ -8,4 +8,5 @@ export const Container = styled.div`
   &:hover {
     color: ${color};
   }
+  margin-bottom: 5px;
 `;
