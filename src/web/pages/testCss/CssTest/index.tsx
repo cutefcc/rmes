@@ -1,5 +1,7 @@
 import './index.css';
+import { useEffect } from 'react';
 const CssTest = () => {
+  useEffect(() => {});
   return (
     <>
       <div className="csstest bg-gray-600">
