@@ -9,14 +9,14 @@ body {
 }
 :root {
   --mainColor: red;
-  --blue: blue;
+  --aColor: pink;
   --headerHeight: 64px;
 }
 #root {
   height: 100%;
 }
 a {
-  color: var(--blue);
+  color: var(--aColor);
 }
 .contentRoot {
   height: calc(100vh - var(--headerHeight));

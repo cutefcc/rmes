@@ -29,6 +29,14 @@ function Record() {
     <Container>
       一个响应式表格，适配移动端，pc：https://github.com/coston/react-super-responsive-table
     </Container>,
+    <Container>
+      用于 React 的类似 Excel的网格组件，带有自定义单元格编辑器、高性能滚动和可调整大小的列，pc：
+      <a href="https://github.com/denisraslov/react-spreadsheet-grid">react-spreadsheet-grid</a>
+    </Container>,
+    <Container>
+      Remotion 是一套库，为使用 React 以编程方式创建视频奠定了基础。
+      <a href="https://github.com/remotion-dev/remotion">remotion</a>
+    </Container>,
   ];
   const renderItem = (index: number) => (
     <div className="bg-slate-50 rounded-3xl hover:bg-slate-100">{item[index]}</div>
