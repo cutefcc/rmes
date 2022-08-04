@@ -1,10 +1,12 @@
 import { Canvas } from '@react-three/fiber';
+import { ModelsHost } from '@constants/ModelsConfig';
 import { OrbitControls, PerspectiveCamera, Html, useProgress, useGLTF } from '@react-three/drei';
 import { Physics, usePlane, useBox } from '@react-three/cannon';
 import { Suspense } from 'react';
 import SkyBox from '@components/ReactThreeFiber/SkyBox';
 import Ground from '@components/ReactThreeFiber/Ground';
 import Boxs from '@components/ReactThreeFiber/Boxs';
+import Ship from '@components/ReactThreeFiber/Ship';
 
 // 涉及到shadow cannon 循环组件 click 事件[原生three绑定事件很麻烦，在react-three中没有这个问题]
 
@@ -23,6 +25,7 @@ function App() {
         <Physics gravity={[0, -9.18, 0]} allowSleep>
           <Ground />
           <Boxs />
+          <Ship />
         </Physics>
       </Canvas>
     </div>
