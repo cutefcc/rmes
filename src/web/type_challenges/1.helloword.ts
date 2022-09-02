@@ -34,7 +34,6 @@ type HelloWorld = string; // expected to be a string
 import type { Equal, Expect, NotAny } from '@type-challenges/utils';
 
 type cases = [Expect<NotAny<HelloWorld>>, Expect<Equal<HelloWorld, string>>];
-
 /* _____________ 下一步 _____________ */
 /*
   > 分享你的解答：https://tsch.js.org/13/answer/zh-CN
