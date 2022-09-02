@@ -85,6 +85,7 @@
     "@react-three/cannon": "^6.3.0",
     "@react-three/drei": "^9.14.3",
     "@react-three/fiber": "^8.0.27",
+    "@type-challenges/utils": "^0.1.1",
     "antd": "^4.21.3",
     "babylonjs-gltf2interface": "^5.16.0",
     "earcut": "^2.2.3",

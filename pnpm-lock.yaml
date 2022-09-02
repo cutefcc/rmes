@@ -22,6 +22,7 @@ specifiers:
   '@react-three/fiber': ^8.0.27
   '@swc/core': ^1.2.203
   '@swc/helpers': ^0.4.2
+  '@type-challenges/utils': ^0.1.1
   '@types/earcut': ^2.1.1
   '@types/node': ^18.0.0
   '@types/react': ^18.0.14
@@ -116,6 +117,7 @@ dependencies:
   '@react-three/cannon': 6.3.0_r6tg3bgnzueitgqffry3vceofy
   '@react-three/drei': 9.17.3_zmnzdvvtoas32pdgzbcknv4whm
   '@react-three/fiber': 8.2.2_jvurxncug65yh22s5p4pqgaif4
+  '@type-challenges/utils': 0.1.1
   antd: 4.22.1_biqbaboplfbrettd7655fr4n2y
   babylonjs-gltf2interface: 5.16.0
   earcut: 2.2.4
@@ -1947,6 +1949,10 @@ packages:
   /@tsconfig/node16/1.0.3:
     resolution: {integrity: sha512-yOlFc+7UtL/89t2ZhjPvvB/DeAr3r+Dq58IgzsFkOAvVC6NMJXmCGjbptdXdR9qsX7pKcTL+s87FtYREi2dEEQ==}
     dev: true
+
+  /@type-challenges/utils/0.1.1:
+    resolution: {integrity: sha512-A7ljYfBM+FLw+NDyuYvGBJiCEV9c0lPWEAdzfOAkb3JFqfLl0Iv/WhWMMARHiRKlmmiD1g8gz/507yVvHdQUYA==}
+    dev: false
 
   /@types/babel__core/7.1.19:
     resolution: {integrity: sha512-WEOTgRsbYkvA/KCsDwVEGkd7WAr1e3g31VHQ8zy5gul/V1qKullU/BU5I68X5v7V3GnB9eotmom4v5a5gjxorw==}
