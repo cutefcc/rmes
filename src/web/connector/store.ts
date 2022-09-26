@@ -5,7 +5,8 @@ import { utils } from 'ethers';
 import { isEqual } from 'lodash-es';
 
 const { getAddress } = utils;
-
+// 这里我们选用了组件外状态，什么时候用组件外状态，什么时候用组件内状态？ 当我们有很多业务逻辑 if 判断时 函数时，一部分状态修改我们不想让其反应到页面，这是我们选择组件外状态所考虑的
+// zustand 我们可以完全不和react相关，使用zustand/vanilla，完全的组件外状态（所有状态不反应在react页面） 当我们想让一些状态反应在页面时需要用到import create from 'zustand' 把我们创建的状态给包一下;
 export const MAX_SAFE_CHAIN_ID = 4503599627370476; //floor((2 ** 53 - 39) / 2);
 export class ChainIdNotAllowError extends Error {
   public readonly chainId: number;
@@ -50,22 +51,6 @@ export function createWeb3ReactStoreAndActions(
   const store = create(immer<Web3ReactState>(() => DEFAULT_STORE));
   const { getState, setState, subscribe, destroy } = store;
 
-  function changeState() {
-    console.log('changeState');
-    // setState({
-    //   name: "cutefcc-new" + Math.random(),
-    // });
-    // bad case: 会触发Re-render 引入zustand/middleware/immer 就可以解决这个问题
-    // setState({ name: "cutefcc", age: 31 });
-    // good case
-    // setState(draft => {
-    //   // immer 的好处，⬇️这样写 只会render 一次
-    //   draft.name = 'cutefcc';
-    //   draft.age = 31;
-    //   // 数组也是 zustand 的一个坑，这样会Re-render
-    //   // draft.arr = [1234];
-    // });
-  }
   // 哨兵变量
   let nullifier = 0;
   function startAction(): () => void {
@@ -111,14 +96,15 @@ export function createWeb3ReactStoreAndActions(
       if (chainId && allowedChainIds) {
         const chainIdError = ensureChainIdIsAllowed(chainId, allowedChainIds);
         if (chainIdError && error) {
-          if (chainIdError instanceof ChainIdNotAllowError) {
-            console.log(`${chainIdError.name} is being clobbered by ${chainIdError.name}`);
+          if (!(error instanceof ChainIdNotAllowError) || error.chainId !== chainIdError.chainId) {
+            console.debug(`${error.name} is being clobbered by ${chainIdError.name}`);
           }
         }
         error = chainIdError;
       }
-
-      if (error) {
+      // error clear
+      if (error && !(error instanceof ChainIdNotAllowError) && chainId && accounts) {
+        error = undefined;
       }
       if (active && (error || (chainId && accounts))) {
         active = false;
