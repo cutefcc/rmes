@@ -27,6 +27,7 @@ const ReactCalendarHeatmap = lazy(() => import('@pages/ReactCalendarHeatmap'));
 const ReactTerminalUi = lazy(() => import('@pages/ReactTerminalUi'));
 const Css2022 = lazy(() => import('@pages/Css2022'));
 const Record = lazy(() => import('@pages/Record'));
+const Polkadotjs = lazy(() => import('@pages/ChainBlock/Polkadotjs'));
 const Routes: RouteObject[] = [];
 const Layout = () => (
   <>
@@ -77,6 +78,7 @@ const mainRoutes = {
     { path: '/record', element: <Record /> },
     { path: '/loading', element: <Loading /> },
     { path: '/testZustand', element: <TestZustand /> },
+    { path: '/polkadotjs', element: <Polkadotjs /> },
     { path: '*', element: <NoMatch /> },
   ],
 };

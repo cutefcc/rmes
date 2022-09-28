@@ -62,6 +62,7 @@ const Header = () => {
         text="daily"
         routeKey={['27', '40', '41', '42', '43', '44', '45', '46', '47', '48']}
       />
+      <MenuPopupState text="ChainBlock" routeKey={['49']} />
     </div>
   );
 };

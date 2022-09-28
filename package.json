@@ -82,6 +82,7 @@
     "@mmfcc/home": "1.7.1",
     "@mmfcc/hooks": "1.9.6",
     "@mui/material": "^5.10.6",
+    "@polkadot/api": "^9.4.2",
     "@react-three/cannon": "^6.4.0",
     "@react-three/drei": "^9.31.1",
     "@react-three/fiber": "^8.7.4",

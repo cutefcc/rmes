@@ -66,7 +66,7 @@ export abstract class Connector {
     return typeof window === 'undefined';
   }
   // 自动连接钱包
-  public connectEagerly?(...args: unknown[]): Promise<void> | void;
+  public connectEarly?(...args: unknown[]): Promise<void> | void;
   // 必须重写掉 用户激活钱包 操作钱包 切链切用户
   public abstract activate(...args: unknown[]): Promise<void> | void;
   // 断开钱包链接
