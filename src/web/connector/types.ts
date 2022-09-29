@@ -39,6 +39,11 @@ export interface RequestArguments {
   params?: unknown[] | Record<string, unknown>;
 }
 
+// per EIP-1193
+export interface ProviderConnectInfo {
+  readonly chainId: string;
+}
+
 // per EIP-747
 export interface WatchAssetParameters {
   address: string; // The address of the token is at.
@@ -47,11 +52,25 @@ export interface WatchAssetParameters {
   image: string; // A string url of the token logo
 }
 
+// per EIP-3085 (https://eips.ethereum.org/EIPS/eip-3085)
+export interface AddEthereumChainParameter {
+  chainId: number;
+  chainName: string;
+  nativeCurrency: {
+    name: string;
+    symbol: string; // 2-6 characters long
+    decimals: 18;
+  };
+  rpcUrls: string[];
+  blockExplorerUrls?: string[];
+  iconUrls?: string[]; // Currently ignored.
+}
+
 // eip 1193: https://eips.ethereum.org/EIPS/eip-1193  https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1193.md
 // eip 1102: https://eips.ethereum.org/EIPS/eip-1102  https://github.com/etherrum/EIPs/blob/master/EIPS/eip-1102.md
 // eip 3085: https://eips.ethereum.org/EIPS/eip-3085  https://github.com/ethereum/EIPs/blob/master/EIPS/eip-3085.md
 export abstract class Connector {
-  public provider: Provider | undefined;
+  public provider?: Provider | undefined;
 
   // 1193 bridge
   public customProvider: unknown | undefined;
