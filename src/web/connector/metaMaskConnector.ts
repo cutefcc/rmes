@@ -8,6 +8,7 @@ import {
   ProviderConnectInfo,
   WatchAssetParameters,
   AddEthereumChainParameter,
+  ProviderRpcError,
 } from '@connector/types';
 // import type { Provider } from 'web3-react/types';
 
@@ -149,52 +150,100 @@ export class MetaMask extends Connector {
   ): Promise<void> {
     let cancelActivation: () => void;
     if (!this.provider?.isConnected?.()) cancelActivation = this.actions.startActivation();
+    await this.isomorphicInitialize();
+    // const tempProvider = this.provider;
+    if (!this.provider) {
+      this.actions.reportError(new NoMetaMaskError());
+    }
+    return Promise.all([
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      this.provider!.request({ method: 'eth_chainId' }) as Promise<string>,
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      this.provider!.request({ method: 'eth_requestAccounts' }) as Promise<string[]>,
+    ])
+      .then(([chainId, accounts]) => {
+        const receivedChainId = parseChainId(chainId);
+        // 传进来的chainId
+        const desiredChainId =
+          typeof desiredChainIdOrChainParameters === 'number'
+            ? desiredChainIdOrChainParameters
+            : desiredChainIdOrChainParameters?.chainId;
 
-    return this.isomorphicInitialize()
-      .then(async () => {
-        if (!this.provider) throw new NoMetaMaskError();
+        // if there's no desired chain, or it's equal to the received, update
+        if (!desiredChainId || receivedChainId === desiredChainId)
+          return this.actions.update({ chainId: receivedChainId, accounts });
+        const desiredChainIdHex = `0x${desiredChainId.toString(16)}`;
 
-        return Promise.all([
-          this.provider.request({ method: 'eth_chainId' }) as Promise<string>,
-          this.provider.request({ method: 'eth_requestAccounts' }) as Promise<string[]>,
-        ]).then(([chainId, accounts]) => {
-          const receivedChainId = parseChainId(chainId);
-          const desiredChainId =
-            typeof desiredChainIdOrChainParameters === 'number'
-              ? desiredChainIdOrChainParameters
-              : desiredChainIdOrChainParameters?.chainId;
-
-          // if there's no desired chain, or it's equal to the received, update
-          if (!desiredChainId || receivedChainId === desiredChainId)
-            return this.actions.update({ chainId: receivedChainId, accounts });
-
-          const desiredChainIdHex = `0x${desiredChainId.toString(16)}`;
-
-          // if we're here, we can try to switch networks
-          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-          return this.provider!.request({
-            method: 'wallet_switchEthereumChain',
-            params: [{ chainId: desiredChainIdHex }],
-          })
-            .catch((error: ProviderRpcError) => {
-              if (error.code === 4902 && typeof desiredChainIdOrChainParameters !== 'number') {
-                // if we're here, we can try to add a new network
-                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-                return this.provider!.request({
-                  method: 'wallet_addEthereumChain',
-                  params: [{ ...desiredChainIdOrChainParameters, chainId: desiredChainIdHex }],
-                });
-              }
-
+        // if we're here, we can try to switch networks
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        return this.provider!.request({
+          method: 'wallet_switchEthereumChain',
+          params: [{ chainId: desiredChainIdHex }],
+        })
+          .catch((error: ProviderRpcError) => {
+            if (error.code === 4902 && typeof desiredChainIdOrChainParameters !== 'number') {
+              // if we're here, we can try to add a new network
+              // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+              return this.provider!.request({
+                method: 'wallet_addEthereumChain',
+                params: [{ ...desiredChainIdOrChainParameters, chainId: desiredChainIdHex }],
+              });
+            } else {
+              this.actions.reportError(error);
               throw error;
-            })
-            .then(() => this.activate(desiredChainId));
-        });
+            }
+          })
+          .then(() => this.activate(desiredChainId));
       })
       .catch(error => {
-        cancelActivation?.();
-        throw error;
+        this.actions.reportError(error);
       });
+
+    // return this.isomorphicInitialize()
+    //   .then(async () => {
+    //     if (!this.provider) throw new NoMetaMaskError();
+
+    //     return Promise.all([
+    //       this.provider.request({ method: 'eth_chainId' }) as Promise<string>,
+    //       this.provider.request({ method: 'eth_requestAccounts' }) as Promise<string[]>,
+    //     ]).then(([chainId, accounts]) => {
+    //       const receivedChainId = parseChainId(chainId);
+    //       const desiredChainId =
+    //         typeof desiredChainIdOrChainParameters === 'number'
+    //           ? desiredChainIdOrChainParameters
+    //           : desiredChainIdOrChainParameters?.chainId;
+
+    //       // if there's no desired chain, or it's equal to the received, update
+    //       if (!desiredChainId || receivedChainId === desiredChainId)
+    //         return this.actions.update({ chainId: receivedChainId, accounts });
+
+    //       const desiredChainIdHex = `0x${desiredChainId.toString(16)}`;
+
+    //       // if we're here, we can try to switch networks
+    //       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    //       return this.provider!.request({
+    //         method: 'wallet_switchEthereumChain',
+    //         params: [{ chainId: desiredChainIdHex }],
+    //       })
+    //         .catch((error: ProviderRpcError) => {
+    //           if (error.code === 4902 && typeof desiredChainIdOrChainParameters !== 'number') {
+    //             // if we're here, we can try to add a new network
+    //             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    //             return this.provider!.request({
+    //               method: 'wallet_addEthereumChain',
+    //               params: [{ ...desiredChainIdOrChainParameters, chainId: desiredChainIdHex }],
+    //             });
+    //           }
+
+    //           throw error;
+    //         })
+    //         .then(() => this.activate(desiredChainId));
+    //     });
+    //   })
+    //   .catch(error => {
+    //     cancelActivation?.();
+    //     throw error;
+    //   });
   }
 
   public async watchAsset({

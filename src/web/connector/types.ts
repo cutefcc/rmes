@@ -52,6 +52,13 @@ export interface WatchAssetParameters {
   image: string; // A string url of the token logo
 }
 
+// per EIP-1193
+export interface ProviderRpcError extends Error {
+  message: string;
+  code: number;
+  data?: unknown;
+}
+
 // per EIP-3085 (https://eips.ethereum.org/EIPS/eip-3085)
 export interface AddEthereumChainParameter {
   chainId: number;
