@@ -35,7 +35,7 @@ function Polkadotjs() {
       console.log(api.consts.transactionPayment.transactionByteFee.toNumber());
     });
   }, []);
-  return <div>Polkadotjs</div>;
+  return <div>Polkadotjs test</div>;
 }
 
 export default Polkadotjs;
