@@ -80,7 +80,7 @@ export abstract class Connector {
   public provider?: Provider | undefined;
 
   // 1193 bridge
-  public customProvider: unknown | undefined;
+  public customProvider?: unknown | undefined;
 
   protected readonly actions: Web3ReactActions;
 

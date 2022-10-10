@@ -34,13 +34,13 @@ function parseChainId(chainId: string) {
 export class MetaMask extends Connector {
   public provider?: MetaMaskProvider;
 
-  private eagerConnection(): Promise<void> {} // web3-react 的源码的早期链接是只能链接eth，不符合我们的需求，所有我们重写了
+  private eagerConnection?: Promise<void>; // web3-react 的源码的早期链接是只能链接eth，不符合我们的需求，所有我们重写了
 
   private readonly options?: Parameters<typeof detectEthereumProvider>[0]; // 把detectEthereumProvider参数挖出来
 
   constructor(
     actions: Web3ReactActions,
-    connectEarly: false,
+    connectEarly: boolean,
     options: Parameters<typeof detectEthereumProvider>[0]
   ) {
     super(actions);
