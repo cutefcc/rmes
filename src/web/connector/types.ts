@@ -2,10 +2,10 @@ import type { EventEmitter } from 'node:events';
 import type { StoreApi } from 'zustand';
 
 export interface Web3ReactState {
-  accounts: string[] | undefined;
-  chainId: number | undefined;
-  active: boolean;
-  error: Error | undefined;
+  accounts: string[] | undefined; // 当前账户
+  chainId: number | undefined; // 链id
+  active: boolean; // 是否正在激活
+  error: Error | undefined; // 错误
 }
 export type Web3ReactStore = StoreApi<Web3ReactState>;
 
