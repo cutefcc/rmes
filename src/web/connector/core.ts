@@ -9,6 +9,11 @@ const CHAIN_ID = ({ chainId }: Web3ReactState): Web3ReactState['chainId'] => cha
 const ACTIVE = ({ active }: Web3ReactState): Web3ReactState['active'] => active;
 const ERROR = ({ error }: Web3ReactState): Web3ReactState['error'] => error;
 
+// wallet 是否 被正确链接上
+function computeIsActive({ chainId, accounts, active, error }: Web3ReactState) {
+  return Boolean(chainId && accounts && !active && !error);
+}
+
 const ACCOUNTS_EQUALITY_CHECKER = (
   oldAccounts: Web3ReactState['accounts'],
   newAccounts: Web3ReactState['accounts']
@@ -29,6 +34,27 @@ const ACCOUNTS_EQUALITY_CHECKER = (
   }
   return true;
 };
+// 派生基础的hooks
+function getDerivedHooks({
+  useAccounts,
+  useChainId,
+  useActive,
+  useError,
+}: ReturnType<typeof getStateHooks>) {
+  function useAccount(): string | undefined {
+    const accounts = useAccounts();
+    return accounts?.[0];
+  }
+  // 是否链接状态
+  function useIsConnected(): boolean {
+    const accounts = useAccounts();
+    const chainId = useChainId();
+    const active = useActive();
+    const error = useError();
+    return computeIsActive({ chainId, accounts, active, error });
+  }
+  return { useIsConnected };
+}
 /* UseBoundStore 解析
 declare type ExtractState<S> = S extends {
     getState: () => infer T;
@@ -68,5 +94,6 @@ export function initializeConnector<T extends Connector>(
   // 组件外状态 + react 结合起来
   const useStore = create(store);
   const stateHooks = getStateHooks(useStore);
+  const derivedHooks = getDerivedHooks(stateHooks);
   return [connector, stateHooks];
 }
