@@ -1,9 +1,8 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useContext, Context } from 'react';
 import { createContext } from 'react';
 import type { BaseProvider, Web3Provider } from '@ethersproject/providers';
-import { Connector } from './types';
+import { Connector, Web3ReactStore } from './types';
 import type { Networkish } from '@ethersproject/networks';
-import type { Web3ReactStore } from '@web3-react/types';
 import { Web3ReactHooks, getPriorityConnector, Web3ReactPriorityHooks } from './core';
 
 export type Web3ContextType<T extends BaseProvider = Web3Provider> = {
@@ -86,4 +85,10 @@ export function Web3ReactProvider({
       {children}
     </Web3Context.Provider>
   );
+}
+
+export function useWeb3React<T extends BaseProvider = Web3Provider>(): Web3ContextType<T> {
+  const context = useContext(Web3Context as Context<Web3ContextType<T> | undefined>);
+  if (!context) throw Error('useWeb3React can only be used within the Web3ReactProvider component');
+  return context;
 }
