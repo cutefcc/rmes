@@ -20,6 +20,12 @@ async function importProvider(): Promise<void> {
   }
 }
 
+export type Web3ReactHooks = ReturnType<typeof getStateHooks> &
+  ReturnType<typeof getDerivedHooks> &
+  ReturnType<typeof getAugmentedHooks>;
+
+export type Web3ReactPriorityHooks = ReturnType<typeof getPriorityConnector>;
+
 const ACCOUNTS = ({ accounts }: Web3ReactState): Web3ReactState['accounts'] => accounts;
 const CHAIN_ID = ({ chainId }: Web3ReactState): Web3ReactState['chainId'] => chainId;
 const ACTIVE = ({ active }: Web3ReactState): Web3ReactState['active'] => active;
@@ -146,6 +152,207 @@ function getAugmentedHooks<T extends Connector>(
   return { useProvider };
 }
 
+export function getSelectedConnector(
+  ...initializedConnectors:
+    | [Connector, Web3ReactHooks][]
+    | [Connector, Web3ReactHooks, Web3ReactStore][]
+) {
+  function getIndex(connector: Connector) {
+    const index = initializedConnectors.findIndex(
+      ([initializedConnector]) => connector === initializedConnector
+    );
+    if (index === -1) throw new Error('Connector not found');
+    return index;
+  }
+
+  function useSelectedStore(connector: Connector) {
+    const store = initializedConnectors[getIndex(connector)][2];
+    if (!store) throw new Error('Stores not passed');
+    return store;
+  }
+
+  // the following code calls hooks in a map a lot, which violates the eslint rule.
+  // this is ok, though, because initializedConnectors never changes, so the same hooks are called each time
+  function useSelectedChainId(connector: Connector) {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const values = initializedConnectors.map(([, { useChainId }]) => useChainId());
+    return values[getIndex(connector)];
+  }
+
+  function useSelectedAccounts(connector: Connector) {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const values = initializedConnectors.map(([, { useAccounts }]) => useAccounts());
+    return values[getIndex(connector)];
+  }
+
+  function useSelectedError(connector: Connector) {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const values = initializedConnectors.map(([, { useError }]) => useError());
+    return values[getIndex(connector)];
+  }
+
+  function useSelectedActive(connector: Connector) {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const values = initializedConnectors.map(([, { useActive }]) => useActive());
+    return values[getIndex(connector)];
+  }
+
+  function useSelectedAccount(connector: Connector) {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const values = initializedConnectors.map(([, { useAccount }]) => useAccount());
+    return values[getIndex(connector)];
+  }
+
+  function useSelectedIsActive(connector: Connector) {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const values = initializedConnectors.map(([, { useIsActive }]) => useIsActive());
+    return values[getIndex(connector)];
+  }
+
+  /**
+   * @typeParam T - A type argument must only be provided if one or more of the connectors passed to
+   * getSelectedConnector is using `connector.customProvider`, in which case it must match every possible type of this
+   * property, over all connectors.
+   */
+  function useSelectedProvider<T extends BaseProvider = Web3Provider>(
+    connector: Connector,
+    network?: Networkish
+  ): T | undefined {
+    const index = getIndex(connector);
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const values = initializedConnectors.map(([, { useProvider }], i) =>
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      useProvider<T>(network, i === index)
+    );
+    return values[index];
+  }
+
+  // function useSelectedENSNames(connector: Connector, provider?: BaseProvider) {
+  //   const index = getIndex(connector);
+  //   const values = initializedConnectors.map(([, { useENSNames }], i) =>
+  //     // eslint-disable-next-line react-hooks/rules-of-hooks
+  //     useENSNames(i === index ? provider : undefined)
+  //   );
+  //   return values[index];
+  // }
+
+  // function useSelectedENSName(connector: Connector, provider?: BaseProvider) {
+  //   const index = getIndex(connector);
+  //   // eslint-disable-next-line react-hooks/rules-of-hooks
+  //   const values = initializedConnectors.map(([, { useENSName }], i) =>
+  //     useENSName(i === index ? provider : undefined)
+  //   );
+  //   return values[index];
+  // }
+
+  return {
+    useSelectedStore,
+    useSelectedChainId,
+    useSelectedAccounts,
+    useSelectedActive,
+    useSelectedAccount,
+    useSelectedIsActive,
+    useSelectedProvider,
+    useSelectedError,
+    // useSelectedENSNames,
+    // useSelectedENSName,
+  };
+}
+
+export function getPriorityConnector(
+  ...initializedConnectors:
+    | [Connector, Web3ReactHooks][]
+    | [Connector, Web3ReactHooks, Web3ReactStore][]
+) {
+  const {
+    useSelectedStore,
+    useSelectedChainId,
+    useSelectedAccounts,
+    useSelectedActive,
+    useSelectedAccount,
+    useSelectedIsActive,
+    useSelectedProvider,
+    useSelectedError,
+    // useSelectedENSNames,
+    // useSelectedENSName,
+  } = getSelectedConnector(...initializedConnectors);
+
+  function usePriorityConnector() {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const values = initializedConnectors.map(([, { useIsActive }]) => useIsActive());
+    const index = values.findIndex(isActive => isActive);
+    return initializedConnectors[index === -1 ? 0 : index][0];
+  }
+
+  function usePriorityStore() {
+    return useSelectedStore(usePriorityConnector());
+  }
+
+  function usePriorityChainId() {
+    return useSelectedChainId(usePriorityConnector());
+  }
+
+  function usePriorityAccounts() {
+    return useSelectedAccounts(usePriorityConnector());
+  }
+
+  function usePriorityActive() {
+    return useSelectedActive(usePriorityConnector());
+  }
+
+  function usePriorityAccount() {
+    return useSelectedAccount(usePriorityConnector());
+  }
+
+  function usePriorityError() {
+    return useSelectedError(usePriorityConnector());
+  }
+
+  function usePriorityIsActive() {
+    return useSelectedIsActive(usePriorityConnector());
+  }
+
+  /**
+   * @typeParam T - A type argument must only be provided if one or more of the connectors passed to
+   * getPriorityConnector is using `connector.customProvider`, in which case it must match every possible type of this
+   * property, over all connectors.
+   */
+  function usePriorityProvider<T extends BaseProvider = Web3Provider>(network?: Networkish) {
+    return useSelectedProvider<T>(usePriorityConnector(), network);
+  }
+
+  // function usePriorityENSNames(provider?: BaseProvider) {
+  //   return useSelectedENSNames(usePriorityConnector(), provider);
+  // }
+
+  // function usePriorityENSName(provider?: BaseProvider) {
+  //   return useSelectedENSName(usePriorityConnector(), provider);
+  // }
+
+  return {
+    useSelectedStore,
+    useSelectedChainId,
+    useSelectedAccounts,
+    useSelectedActive,
+    useSelectedAccount,
+    useSelectedIsActive,
+    useSelectedProvider,
+    useSelectedError,
+    // useSelectedENSNames,
+    // useSelectedENSName,
+    usePriorityConnector,
+    usePriorityStore,
+    usePriorityChainId,
+    usePriorityAccounts,
+    usePriorityActive,
+    usePriorityAccount,
+    usePriorityIsActive,
+    usePriorityProvider,
+    usePriorityError,
+    // usePriorityENSNames,
+    // usePriorityENSName,
+  };
+}
 export function initializeConnector<T extends Connector>(
   f: (actions: Web3ReactActions) => T,
   allowedChainIds: number[]
@@ -159,5 +366,5 @@ export function initializeConnector<T extends Connector>(
   const derivedHooks = getDerivedHooks(stateHooks);
   // 真正向外暴露的hooks
   const augmentedHooks = getAugmentedHooks<T>(connector, stateHooks, derivedHooks);
-  return [connector, { ...stateHooks, ...derivedHooks, ...augmentedHooks }];
+  return [connector, { ...stateHooks, ...derivedHooks, ...augmentedHooks }, store];
 }

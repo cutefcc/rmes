@@ -35,6 +35,7 @@ specifiers:
   '@types/three': ^0.144.0
   '@typescript-eslint/eslint-plugin': ^5.38.0
   '@typescript-eslint/parser': ^5.38.0
+  '@web3-react/types': ^6.0.7
   '@welldone-software/why-did-you-render': ^7.0.1
   antd: ^4.23.2
   autoprefixer: ^10.4.11
@@ -128,6 +129,7 @@ dependencies:
   '@react-three/drei': 9.31.1_op7v6ruth4e32jzobd2a22vqqm
   '@react-three/fiber': 8.7.4_ww22p6cticflcq7fk2rysgxj34
   '@type-challenges/utils': 0.1.1
+  '@web3-react/types': 6.0.7
   antd: 4.23.2_biqbaboplfbrettd7655fr4n2y
   babylonjs-gltf2interface: 5.24.0
   earcut: 2.2.4
@@ -195,7 +197,7 @@ devDependencies:
   regenerator-runtime: 0.13.9
   scripty: 2.1.1
   swc-loader: 0.2.3_eto4x6jt33gtsigrwmgzfmmwve
-  tailwindcss: 3.1.8_ts-node@10.9.1
+  tailwindcss: 3.1.8_57znarxsqwmnneadci5z5fd5gu
   terser-webpack-plugin: 5.3.6_eto4x6jt33gtsigrwmgzfmmwve
   ts-jest: 29.0.1_3v2of4mknskhifwzp4doj5a3fa
   ts-node: 10.9.1_rirhebo7lhg45loez5su6drrqe
@@ -2997,7 +2999,6 @@ packages:
     resolution: {integrity: sha512-/5OFZgfIPSwy+YuIBP/FgJnQnsxhZhjjrnxudMddeblOouIodEQ75X14Rr4wGSG/bknL+Omy9iWlLo1u/9GzAA==}
     dependencies:
       '@types/react': 18.0.20
-    dev: true
 
   /@types/react-is/17.0.3:
     resolution: {integrity: sha512-aBTIWg1emtu95bLTLx0cpkxwGW3ueZv71nE2YFBpL8k/z5czEW8yYpOo8Dp+UUAFAtKwNaOsh/ioSeQnWlZcfw==}
@@ -3303,6 +3304,10 @@ packages:
 
   /@virtuoso.dev/urx/0.2.13:
     resolution: {integrity: sha512-iirJNv92A1ZWxoOHHDYW/1KPoi83939o83iUBQHIim0i3tMeSKEh+bxhJdTHQ86Mr4uXx9xGUTq69cp52ZP8Xw==}
+    dev: false
+
+  /@web3-react/types/6.0.7:
+    resolution: {integrity: sha512-ofGmfDhxmNT1/P/MgVa8IKSkCStFiyvXe+U5tyZurKdrtTDFU+wJ/LxClPDtFerWpczNFPUSrKcuhfPX1sI6+A==}
     dev: false
 
   /@webassemblyjs/ast/1.11.1:
@@ -9448,7 +9453,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       loose-envify: 1.4.0
-    dev: false
 
   /read-cache/1.0.0:
     resolution: {integrity: sha512-Owdv/Ft7IjOgm/i0xvNDZ1LrRANRfew4b2prF3OWMQLxLfu3bS8FVhCsrSCMK4lR56Y9ya+AThoTpDCTxCmpRA==}
@@ -10150,10 +10154,12 @@ packages:
       webpack: 5.74.0_mbu7oliezejrudnstpmuqsn3ca
     dev: true
 
-  /tailwindcss/3.1.8_ts-node@10.9.1:
+  /tailwindcss/3.1.8_57znarxsqwmnneadci5z5fd5gu:
     resolution: {integrity: sha512-YSneUCZSFDYMwk+TGq8qYFdCA3yfBRdBlS7txSq0LUmzyeqRe3a8fBQzbz9M3WS/iFT4BNf/nmw9mEzrnSaC0g==}
     engines: {node: '>=12.13.0'}
     hasBin: true
+    peerDependencies:
+      postcss: ^8.0.9
     dependencies:
       arg: 5.0.2
       chokidar: 3.5.3
@@ -10492,7 +10498,6 @@ packages:
     resolution: {integrity: sha512-goMHfm00nWPa8UvR/CPSvykqf6dVV8x/dp0c5mFTMTIu0u0FlGWRioyy7Nn0PGAdHxpJZnuO/ut+PpQ8UiHAig==}
     engines: {node: '>=4.2.0'}
     hasBin: true
-    dev: true
 
   /unbox-primitive/1.0.2:
     resolution: {integrity: sha512-61pPlCD9h51VoreyJ0BReideM3MDKMKnh6+V9L08331ipq6Q8OFXZYiqP6n/tbHx4s5I9uRhcye6BrbkizkBDw==}
