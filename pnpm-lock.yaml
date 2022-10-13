@@ -13,6 +13,8 @@ specifiers:
   '@emotion/css': ^11.10.0
   '@emotion/react': ^11.10.4
   '@emotion/styled': ^11.10.4
+  '@ethersproject/networks': ^5.7.1
+  '@ethersproject/providers': ^5.7.1
   '@koa/router': ^12.0.0
   '@metamask/detect-provider': ^1.2.0
   '@mmfcc/home': 1.7.1
@@ -114,6 +116,8 @@ dependencies:
   '@emotion/css': 11.10.0_@babel+core@7.19.1
   '@emotion/react': 11.10.4_axxkdcpdr7up57umjkldobkynm
   '@emotion/styled': 11.10.4_sn4wuyy54zwps25tv4w7lbiz6i
+  '@ethersproject/networks': 5.7.1
+  '@ethersproject/providers': 5.7.1
   '@koa/router': 12.0.0
   '@metamask/detect-provider': 1.2.0
   '@mmfcc/home': 1.7.1

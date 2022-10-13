@@ -79,7 +79,7 @@ export interface AddEthereumChainParameter {
 export abstract class Connector {
   public provider?: Provider | undefined;
 
-  // 1193 bridge
+  // 1193 bridge 自定义provider
   public customProvider?: unknown | undefined;
 
   protected readonly actions: Web3ReactActions;
