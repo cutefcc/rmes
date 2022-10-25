@@ -1,10 +1,9 @@
-import { ArbitrumICON, BscIcon, MainnetIcon, MaticIcon } from '@connector/configure/misc';
 import {
   AddEthereumChainParameter,
   BasicChainInformation,
   ExtendedChainInformation,
 } from '@connector/types';
-
+import { ArbitrumICON, BscIcon, MainnetIcon, MaticIcon } from './misc';
 export enum SupportedChainId {
   MAINNET = 1,
   BSC = 56,
@@ -21,30 +20,40 @@ export enum SupportedChainId16 {
 
 export const NETWORK_LABEL: { [chainId in SupportedChainId]: string } = {
   [SupportedChainId.MAINNET]: 'Ethereum',
-  [SupportedChainId.BSC]: 'Binance Smart Chain',
-  [SupportedChainId.MATIC]: 'Polygon',
+  //[SupportedChainId.RINKEBY]: 'Rinkeby',
+  [SupportedChainId.MATIC]: 'Polygon (Matic)',
+  //[SupportedChainId.MATIC_TESTNET]: 'Polygon Testnet',
+  [SupportedChainId.BSC]: 'BSC',
+  //[SupportedChainId.BSC_TESTNET]: 'BSC Testnet',
   [SupportedChainId.ARBITRUM]: 'Arbitrum',
+  //[SupportedChainId.ARBITRUM_TESTNET]: 'Arbitrum Testnet',
 };
 
-export const ALL_SUPPORTED_CHAIN_IDS = Object.values(SupportedChainId);
-
-// 和types里面的东西重复了，像这些标准的东西完全可以写到私仓里面去
+export const ALL_SUPPORTED_CHAIN_IDS = [
+  SupportedChainId.MAINNET,
+  //SupportedChainId.RINKEBY,
+  SupportedChainId.BSC,
+  //SupportedChainId.BSC_TESTNET,
+  SupportedChainId.MATIC,
+  //SupportedChainId.MATIC_TESTNET,
+  SupportedChainId.ARBITRUM,
+];
+// per EIP-3085
 export interface ChainInfoItem {
-  chainId: string;
+  chainId: string; // A 0x-prefixed hexadecimal string
   chainName: string;
   nativeCurrency: {
     name: string;
     symbol: string;
-    decimals: 18; // 18
+    decimals: 18;
   };
-  rpcUrls: string[];
+  rpcUrls?: string[];
   blockExplorerUrls?: string[];
-  iconUrls?: string[];
+  iconUrls?: string[]; // Currently ignored.
 }
 
 export type ChainInfo = { readonly [chainId in SupportedChainId]: ChainInfoItem };
 
-// 如何去查询：eth rpc node url   polygon rpc node url
 export const CHAIN_INFO: ChainInfo = {
   [SupportedChainId.MAINNET]: {
     chainId: SupportedChainId16[SupportedChainId.MAINNET],
@@ -54,7 +63,7 @@ export const CHAIN_INFO: ChainInfo = {
       symbol: 'ETH',
       decimals: 18,
     },
-    rpcUrls: ['https://mainnet.infura.io/v3/你的密钥'],
+    rpcUrls: [`https://mainnet.infura.io/v3/你的秘钥`],
     blockExplorerUrls: ['https://etherscan.com'],
     iconUrls: [MainnetIcon],
   },
@@ -62,17 +71,17 @@ export const CHAIN_INFO: ChainInfo = {
     chainId: SupportedChainId16[SupportedChainId.BSC],
     chainName: 'BSC',
     nativeCurrency: {
-      name: 'BSC',
+      name: 'Binance Coin',
       symbol: 'BNB',
       decimals: 18,
     },
-    rpcUrls: ['https://bsc-dataseed.binance.org/'],
-    blockExplorerUrls: ['https://bscscan.com/'],
+    rpcUrls: ['https://bsc-dataseed.binance.org'],
+    blockExplorerUrls: ['https://bscscan.com'],
     iconUrls: [BscIcon],
   },
   [SupportedChainId.MATIC]: {
     chainId: SupportedChainId16[SupportedChainId.MATIC],
-    chainName: 'Matic',
+    chainName: 'Polygon (Matic)',
     nativeCurrency: {
       name: 'Matic',
       symbol: 'MATIC',
@@ -82,11 +91,11 @@ export const CHAIN_INFO: ChainInfo = {
       'https://polygon-rpc.com/',
       'https://rpc-mainnet.matic.network',
       'https://rpc-mainnet.maticvigil.com',
-      'https://matic-mainnet.chainstacklabs.com',
+      'https://matic-mainnet.chainstacklabs.com/',
       'https://rpc-mainnet.matic.quiknode.pro',
       'https://matic-mainnet-full-rpc.bwarelabs.com',
     ],
-    blockExplorerUrls: ['https:/explorer-mainnet.maticvigil.com/'],
+    blockExplorerUrls: ['https://explorer-mainnet.maticvigil.com'],
     iconUrls: [MaticIcon],
   },
   [SupportedChainId.ARBITRUM]: {
@@ -107,7 +116,7 @@ export const URLS: { [chainId: number]: string[] } = Object.keys(CHAIN_INFO).red
   [chainId: number]: string[];
 }>((accumulator, cId) => {
   const chainId = Number(cId) as SupportedChainId;
-  const validURLs = CHAIN_INFO[chainId].rpcUrls || [];
+  const validURLs: string[] = CHAIN_INFO[chainId].rpcUrls || [];
   if (validURLs.length) {
     accumulator[chainId] = validURLs;
   }

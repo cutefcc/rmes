@@ -4,6 +4,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { useNavigate } from 'react-router-dom';
 import { MenuRouteConfig, MenuRouteConfigType } from '@constants/MenuRouteConfig';
 import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
+import { useEffect } from 'react';
 
 type GetMenuItemProps = {
   routeKey: string[];
@@ -46,9 +47,14 @@ function MenuPopupState(props) {
 }
 const Header = () => {
   const navigate = useNavigate();
+
   const handleHome = () => {
     navigate(MenuRouteConfig['0'].route);
   };
+
+  useEffect(() => {
+    console.log('header render');
+  });
   return (
     <div className="h-64 bg-slate-900 pl-60 flex justify-start items-center">
       <Button variant="contained" onClick={handleHome}>

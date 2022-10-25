@@ -103,3 +103,13 @@ export abstract class Connector {
   // 添加资产，添加一个额外的token
   public watchAsset?(params: WatchAssetParameters): Promise<true>;
 }
+
+export interface BasicChainInformation {
+  urls: string[];
+  name: string;
+}
+
+export interface ExtendedChainInformation extends BasicChainInformation {
+  nativeCurrency: AddEthereumChainParameter['nativeCurrency'];
+  blockExplorerUrls: AddEthereumChainParameter['blockExplorerUrls'];
+}

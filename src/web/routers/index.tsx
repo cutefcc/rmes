@@ -28,6 +28,7 @@ const ReactTerminalUi = lazy(() => import('@pages/ReactTerminalUi'));
 const Css2022 = lazy(() => import('@pages/Css2022'));
 const Record = lazy(() => import('@pages/Record'));
 const Polkadotjs = lazy(() => import('@pages/ChainBlock/Polkadotjs'));
+// const Wallet = lazy(() => import('@pages/ChainBlock/Wallet'));
 const Routes: RouteObject[] = [];
 const Layout = () => (
   <>
@@ -49,6 +50,12 @@ function NoMatch() {
     </div>
   );
 }
+
+const childRoutes = {
+  path: '/cr',
+  element: <Layout />,
+  children: [],
+};
 
 const mainRoutes = {
   path: '/',
@@ -79,10 +86,11 @@ const mainRoutes = {
     { path: '/loading', element: <Loading /> },
     { path: '/testZustand', element: <TestZustand /> },
     { path: '/polkadotjs', element: <Polkadotjs /> },
+    // { path: '/wallet', element: <Wallet /> },
     { path: '*', element: <NoMatch /> },
   ],
 };
 
-Routes.push(mainRoutes);
+Routes.push(mainRoutes, childRoutes);
 
 export default Routes;
