@@ -1,6 +1,6 @@
-// import create from 'zustand/vanilla';
-// import { createStore } from 'zustand';
-import { createStore } from '../zustandSrc';
+import create from 'zustand/vanilla';
+// import create from 'zustand';
+// import { createStore } from '../zustandSrc';
 // 解决Re-render 问题，当然也可以不用中间件，直接用immer
 // import { immer } from 'zustand/middleware/immer';
 import { immer } from '../zustandSrc/middleware/immer';
@@ -14,8 +14,13 @@ const DEFAULT_STORE = {
 
 // const store = create(() => ({ ...DEFAULT_STORE }));
 // 引入zustand/middleware/immer 就可以解决 Re-render 问题
-// const store = createStore(immer<typeof DEFAULT_STORE>(() => ({ ...DEFAULT_STORE })));
-const store = createStore(() => ({ ...DEFAULT_STORE }));
+const store = create(immer<typeof DEFAULT_STORE>(() => ({ ...DEFAULT_STORE })));
+// const store = create()((set, get, api) => {
+//   console.log('set', set);
+//   console.log('get', get, get()); // get undefined
+//   console.log('api', api);
+//   return { ...DEFAULT_STORE };
+// });
 console.log('store', store);
 const { getState, setState, subscribe, destroy } = store;
 
@@ -36,9 +41,19 @@ function changeState() {
     // draft.arr = [1234];
   });
 }
+
+// can work
 function handleAddZustandAge() {
-  setState(draft => {
-    draft.age = draft.age + 1;
+  // setState(draft => {
+  //   draft.age = draft.age + 1;
+  // });
+
+  setState(preState => {
+    console.log('preState', preState);
+    // const preState = getState();
+    preState.age += 1;
+
+    return preState;
   });
 }
 // subscribe((draft) => {

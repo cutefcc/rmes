@@ -34,8 +34,8 @@ export function Web3ReactProvider({
   connectors,
   connectorOverride,
   network,
-  lookupENS = true,
-}: Web3ReactProviderProps) {
+}: // lookupENS = true,
+Web3ReactProviderProps) {
   const hooks = getPriorityConnector(...connectors);
   const {
     usePriorityConnector,
