@@ -13,7 +13,7 @@ type GlobalWalletType = {
   errMsg: Error | undefined;
   connector: Connector;
   isActive: boolean;
-  isActivating: boolean;
+  active: boolean;
 };
 const DEFAULT_STATE = {} as GlobalWalletType;
 const walletTypeStore = createStore(

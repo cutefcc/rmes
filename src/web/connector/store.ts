@@ -36,10 +36,10 @@ function validateAccount(account: string): string {
 }
 // zustand/vanilla 不依赖react
 const DEFAULT_STORE = {
-  accounts: undefined,
-  chainId: undefined,
-  active: false,
-  error: undefined,
+  accounts: undefined, // 当前账户
+  chainId: undefined, // 当前网络
+  active: false, // 是否正在连接
+  error: undefined, // 错误
 };
 
 // https://github.com/Uniswap/web3-react/blob/main/packages/store/src/index.ts

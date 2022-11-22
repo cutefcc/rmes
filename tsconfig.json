@@ -32,7 +32,8 @@
       "@utils/*": ["web/utils/*"],
       "@lib/*": ["web/lib/*"],
       "@constants/*": ["web/constants/*"],
-      "@connector/*": ["web/connector/*"]
+      "@connector/*": ["web/connector/*"],
+      "@states/*": ["web/states/*"]
     }
   },
   "include": ["src"]

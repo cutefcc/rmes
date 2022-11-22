@@ -128,6 +128,7 @@ const webpackBaseConfig = {
       '@lib': resolve('src/web/lib'),
       '@constants': resolve('src/web/constants'),
       '@connector': resolve('src/web/connector'),
+      '@states': ['web/states/states'],
     },
     extensions: ['.js', '.ts', '.tsx', 'jsx', '.css'],
   },

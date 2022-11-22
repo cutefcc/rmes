@@ -11,7 +11,7 @@ export function useWalletGlobal() {
     connector,
     accounts,
     isActive,
-    isActivating,
+    active,
   } = interfaceContext;
   useEffect(() => {
     walletTypeStore.setState(draft => {
@@ -25,7 +25,7 @@ export function useWalletGlobal() {
       //钱包是都彻底链接成功
       draft.isActive = isActive;
       //用户的操作有没有结束 loading...
-      draft.isActivating = isActivating;
+      draft.active = active;
     });
-  }, [accounts, chainId, connector, error, isActivating, isActive, library, library?.provider]);
+  }, [accounts, chainId, connector, error, active, isActive, library, library?.provider]);
 }
