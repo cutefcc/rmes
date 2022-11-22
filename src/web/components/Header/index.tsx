@@ -60,14 +60,14 @@ const Header = () => {
       <Button variant="contained" onClick={handleHome}>
         HOME
       </Button>
-      <MenuPopupState text="babylon" routeKey={['28', '29', '30', '36']} />
+      {/* <MenuPopupState text="babylon" routeKey={['28', '29', '30', '36']} />
       <MenuPopupState text="three" routeKey={['32', '37']} />
-      <MenuPopupState text="react-three-fiber" routeKey={['34', '38']} />
+      <MenuPopupState text="react-three-fiber" routeKey={['34', '38']} /> */}
       <MenuPopupState text="store" routeKey={['23', '25', '24']} />
-      <MenuPopupState
+      {/* <MenuPopupState
         text="daily"
         routeKey={['27', '40', '41', '42', '43', '44', '45', '46', '47', '48']}
-      />
+      /> */}
       <MenuPopupState text="ChainBlock" routeKey={['49']} />
     </div>
   );
