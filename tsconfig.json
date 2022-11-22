@@ -20,21 +20,22 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "rootDir": ".",
-    "baseUrl": "src",
+    "baseUrl": ".",
     "paths": {
-      "@components/*": ["web/components/*"],
-      "@assets/*": ["web/assets/*"],
-      "@pages/*": ["web/pages/*"],
-      "@layouts/*": ["web/layouts/*"],
-      "@service/*": ["web/service/*"],
-      "@hooks/*": ["web/hooks/*"],
-      "@store/*": ["web/store/*"],
-      "@utils/*": ["web/utils/*"],
-      "@lib/*": ["web/lib/*"],
-      "@constants/*": ["web/constants/*"],
-      "@connector/*": ["web/connector/*"],
-      "@states/*": ["web/states/*"]
+      "@components/*": ["src/web/components/*"],
+      "@assets/*": ["src/web/assets/*"],
+      "@pages/*": ["src/web/pages/*"],
+      "@layouts/*": ["src/web/layouts/*"],
+      "@service/*": ["src/web/service/*"],
+      "@hooks/*": ["src/web/hooks/*"],
+      "@store/*": ["src/web/store/*"],
+      "@utils/*": ["src/web/utils/*"],
+      "@lib/*": ["src/web/lib/*"],
+      "@constants/*": ["src/web/constants/*"],
+      "@connector/*": ["src/web/connector/*"],
+      "@states/*": ["src/web/states/*"]
     }
   },
-  "include": ["src"]
+  "include": ["src", "tests"],
+  "exclude": ["node_modules", "build", "scripts"]
 }

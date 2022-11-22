@@ -9,6 +9,7 @@ tests/
 jest.config.js
 webpack.config.js
 postcss.config.js
+cypress.config.ts
 src/stories
 tailwind.config.js
 lingui.config.js
