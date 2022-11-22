@@ -1,7 +1,7 @@
 import { walletTypeAtom } from '@states/wallet';
 import { Web3ReactHooks } from '@connector/core';
 import { hooks as metaMaskHooks, metaMask } from '@connector/metaMask';
-import { MetaMask } from '@connector/metamaskConnector';
+import { MetaMask } from '@connector/metaMaskConnector';
 import { Web3ReactProvider } from '@connector/provider';
 import { useAtom } from 'jotai';
 import { ReactNode } from 'react';

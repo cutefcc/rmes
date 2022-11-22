@@ -5,6 +5,7 @@
     "client:dev": "scripty",
     "client:prod": "scripty",
     "client:serve": "scripty",
+    "cypress:open": "cypress open",
     "lint": "eslint --ext .ts src"
   },
   "keywords": [],
@@ -28,6 +29,7 @@
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.1",
     "css-minimizer-webpack-plugin": "^4.1.0",
+    "cypress": "^11.1.0",
     "dotenv-webpack": "^8.0.1",
     "eslint": "^8.23.1",
     "eslint-config-airbnb-typescript": "^17.0.0",
