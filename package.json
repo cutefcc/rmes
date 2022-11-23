@@ -6,6 +6,7 @@
     "client:prod": "scripty",
     "client:serve": "scripty",
     "cypress:open": "cypress open",
+    "cy:open": "CYPRESS_REMOTE_DEBUGGING_PORT=9222 cypress open",
     "lint": "eslint --ext .ts src"
   },
   "keywords": [],
@@ -30,6 +31,7 @@
     "css-loader": "^6.7.1",
     "css-minimizer-webpack-plugin": "^4.1.0",
     "cypress": "^11.1.0",
+    "cypress-metamask-v2": "^1.7.2",
     "dotenv-webpack": "^8.0.1",
     "eslint": "^8.23.1",
     "eslint-config-airbnb-typescript": "^17.0.0",
