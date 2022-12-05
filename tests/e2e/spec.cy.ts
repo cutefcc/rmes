@@ -9,12 +9,10 @@ describe('My First Test', () => {
   });
 
   it('input', () => {
-    // cy.url().should('include', '/home');
-
-    // cy.visit('chrome-extension://ilehkoaehinefbecpfgkccoinlpkimbp/home.html#unlock');
-    cy.visit('www.baidu.com');
-    cy.get('#kw').click();
-    cy.get('#kw').type('12345678');
+    cy.window().then(win => {
+      // win is the remote window
+      console.log('win', win);
+    });
   });
 });
 

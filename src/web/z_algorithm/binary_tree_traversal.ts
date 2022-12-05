@@ -90,3 +90,22 @@ function backTraversal(root: TreeNode | null): number[] {
   }
   return res;
 }
+
+// 二叉树层序遍历，也叫广度优先遍历
+function levelOrderTraversal(root: TreeNode | null): number[] {
+  if (root === null) return [];
+  const queue: TreeNode[] = [];
+  const res: number[] = [];
+  queue.push(root);
+  while (queue.length > 0) {
+    const temp: TreeNode = queue.shift()!;
+    res.push(temp.val);
+    if (temp.left) {
+      queue.push(temp.left);
+    }
+    if (temp.right) {
+      queue.push(temp.right);
+    }
+  }
+  return res;
+}

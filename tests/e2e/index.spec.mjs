@@ -3,10 +3,11 @@ import dappeteer from '@chainsafe/dappeteer';
 
 async function main() {
   const browser = await dappeteer.launch(puppeteer, {
-    // headless: true,
+    headless: false,
     metamaskVersion: 'v10.15.0',
-    executablePath: './chrome-mac/Chromium.app/Contents/MacOS/Chromium',
+    executablePath: '/Applications/Google Chrome Canary.app/Contents/MacOS/Google Chrome Canary',
     slowMo: 180, // slow down by 180ms
+    defaultViewport: null,
     args: ['--no-sandbox'],
   });
   const metamask = await dappeteer.setupMetamask(browser, {

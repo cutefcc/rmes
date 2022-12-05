@@ -3,6 +3,9 @@ import { memo, useEffect, useState } from 'react';
 import { useAtom } from 'jotai';
 import { store } from '@store/jotaiStore/testJotai';
 
+import { recoilState } from '@store/recoilStore';
+import { RecoilRoot, atom, selector, useRecoilState, useRecoilValue } from 'recoil';
+
 import {
   getState,
   setState,
@@ -18,6 +21,7 @@ function TestStore() {
   const [data, setData] = useImmer({ owner_list: [] });
   const [a, setA] = useState({ a: 1 });
   const { name, arr, age } = useStore();
+  const [recoilVal, setRecoilVal] = useRecoilState(recoilState);
   console.log('home render');
   useEffect(() => {
     // fetch('https://my-app.cutefcc.workers.dev/api/ent/project/has_position')
@@ -52,6 +56,7 @@ function TestStore() {
       <p>
         test zustand: name: {name}, arr: {arr}, age: {age}
       </p>
+      <p>test recoil: value: {recoilVal}</p>
     </div>
   );
 }

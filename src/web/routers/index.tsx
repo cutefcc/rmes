@@ -17,6 +17,7 @@ const TestZustand = lazy(() => import('@pages/TestZustand'));
 // const ThreeShadow = lazy(() => import('@pages/three/ThreeShadow'));
 const TestJotai = lazy(() => import('@pages/TestJotai'));
 const TestStore = lazy(() => import('@pages/TestStore'));
+const TestRecoil = lazy(() => import('@pages/TestRecoil'));
 // const BabylonSkyBox = lazy(() => import('@pages/babylon/BabylonSkyBox'));
 // const TestReactUse = lazy(() => import('@pages/TestReactUse'));
 // const Spaceship = lazy(() => import('@pages/reactThreeFiber/Spaceship'));
@@ -85,6 +86,7 @@ const mainRoutes = {
     // { path: '/record', element: <Record /> },
     { path: '/loading', element: <Loading /> },
     { path: '/testZustand', element: <TestZustand /> },
+    { path: '/testRecoil', element: <TestRecoil /> },
     { path: '/polkadotjs', element: <Polkadotjs /> },
     // { path: '/wallet', element: <Wallet /> },
     { path: '*', element: <NoMatch /> },
